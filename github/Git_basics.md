@@ -194,7 +194,7 @@ this is my first file
 ```
 so this is how we can revert out commit to previos version.
 
-# How to push a repository to GitHub
+# How to push our project to GitHub
 
 ### Step 1 – Create a GitHub account
 Create a github account using the below link.
