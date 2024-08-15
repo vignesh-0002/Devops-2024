@@ -82,6 +82,5 @@ awk '$3=="kB"{$2=$2/1024;$3="MB"} 1' /proc/meminfo | column -t
 * `DirectMap4k` Amount of memory mapped using 4 KB pages (standard page size), This shows the amount of memory that is directly mapped using the standard 4 KB page size. Direct mapping allows the kernel to map memory into the address space of the process directly.
 * `DirectMap2M` Amount of memory mapped using 2 MB pages, This represents the memory mapped using 2 MB pages. This mapping size is larger than the standard 4 KB page, and is used to reduce the number of page table entries needed for managing large amounts of memory.
 * `DirectMap1G` Amount of memory mapped using 1 GB pages, This indicates the memory mapped using 1 GB pages. Large pages like this are useful for applications that require very large amounts of contiguous memory, as they reduce the overhead of managing memory.
-* 
 ### Output:
 <img width="758" alt="image" src="https://github.com/user-attachments/assets/13c3b727-2ab8-4891-9ef2-f67bc704e3a8">
