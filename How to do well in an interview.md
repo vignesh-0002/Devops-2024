@@ -1,9 +1,16 @@
 # How to do well in an interview
 
 ## Index
-- [Introduction](#introduction)
-- [Current Process Review](#current-process-review)
-    - [Current Process](#current-process)
+- [1_Introdutio and overview](1_introduction-and-overview)
+   - [Introduction](#introduction)
+   - [Current Process Review](#current-process-review)
+       - [Current Process](#current-process)
+   - [Why not consider a process](#why-not-consider-a-process)
+   - [Process Overview to do well](process-overview-to-do-well)
+   - [Introduction & Overview Summary](introduction-&-overview-summary)
+
+# 1_Introdutio and overview
+
 ## Introduction
 The purpose of the module is to give you an
 overview about the process that can better help
@@ -45,5 +52,51 @@ interviews and how effective is it?
                 D --> E[Appear in real interview and try your best but miss being selected]
 ```
 
++ You find that you did not get enough time to prepare well
++ What you prepared was not what was asked
++ You did not perform confidently in the interview
 
-    
+## Why not consider a process
+<!-- This table will not be rendered -->
+<!-- ![image](https://github.com/user-attachments/assets/9889b054-1ec5-4073-b47e-5fccb62b4c73) -->
+
+<!-- <p align="center">
+  <img src="https://github.com/user-attachments/assets/9889b054-1ec5-4073-b47e-5fccb62b4c73" alt="image">
+</p> -->
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9889b054-1ec5-4073-b47e-5fccb62b4c73" alt="image" width="500" height="300">
+</p>
+
++ CAN PROVIDE ENOUGH TIME to prepare well
++ Helps you PREAPRE WHAT WILL BE ASKED
++ Helps you PERFORM CONFIDENTLY in the interview
+
+## Process Overview to do well
+
+```mermaid
+flowchart LR
+    A[Plan] --> B[Prepare]
+    B --> C[Perform]
+```
+## Introduction & Overview Summary
+
+Most of us either
+- ➢ start revising all the stuff we have learnt, or
+- ➢ if lucky, get opportunities to go through mock interviews.
+
+This process is not very effective for most of us because
+- ➢ we don’t get enough time to prepare, and
+- ➢ we don’t prepare the right things.
+
+We need to consider adopting a process that can help you
+- ➢ prepare the right things, and
+- ➢ be ready in time to do well in your interviews.
+
+We have a process that can help you succeed in your interviews by
+- ➢ planning the preparation,
+- ➢ preparing the right things, and
+- ➢ then performing with confidence.
+
+
+
