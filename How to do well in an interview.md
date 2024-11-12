@@ -1,7 +1,7 @@
 # How to do well in an interview
 
 ## Index
-- [1_Introdutio and overview](1_introduction-and-overview)
+- [1_introduction and overview](1_introduction-and-overview)
    - [Introduction](#introduction)
    - [Current Process Review](#current-process-review)
        - [Current Process](#current-process)
@@ -9,7 +9,7 @@
    - [Process Overview to do well](process-overview-to-do-well)
    - [Introduction & Overview Summary](introduction-&-overview-summary)
 
-# 1_Introdutio and overview
+# 1_introduction and overview
 
 ## Introduction
 The purpose of the module is to give you an
