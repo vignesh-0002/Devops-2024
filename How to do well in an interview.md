@@ -3,6 +3,7 @@
 ## Index
 - [Introduction](#introduction)
 - [Current Process Review](#current-process-review)
+    - [Current Process](#current-process)
 ## Introduction
 The purpose of the module is to give you an
 overview about the process that can better help
