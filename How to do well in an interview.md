@@ -9,9 +9,8 @@
    - [Process Overview to do well](#process-overview-to-do-well)
    - [Introduction and Overview Summary](#introduction-and-overview-summary)
 - [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview-what-to-plan-and-how)
-
-Current Process Review
-
+   - [Current Process Review](#current-process-review)
+   - [Current Process and its effectiveness](current-process-and-its-effectiveness)
 ## 1_introduction and overview
 
 ## Introduction
@@ -105,5 +104,58 @@ We have a process that can help you succeed in your interviews by
 
 ## Current Process Review
 
+What do you do now to plan to do well in your interviews and how effective is it?
 
+| Current Process       | Process Effectiveness     |
+|-----------------------|---------------------------|
+|                       |                           |
+|                       |                           |
+|                       |                           |
+
+## Current Process and its effectiveness
+
+Most of us don’t plan properly for doing well in
+our interview
++ We start our preparation for the interview as and
+when we find time, sometimes just a day or right
+ahead of the interview
++ This process in not very effective for most of us
+as we don’t get enough time to prepare and
+don’t prepare the right things
++ And this lack of planning leads to us being
+unprepared and not confident in the interview
++ Leading to us not doing well in the interview
+
+## Why not consider a process that.
++ CAN PROVIDE ENOUGH TIME to prepare well
++ Helps you PREAPRE WHAT WILL BE ASKED
++ Helps you PERFORM CONFIDENTLY in the interview
+
+## What to Plan for an Interview
+
+### How will you reach there physically or connect online?
+- **Route to take**
+- **Time to start** so that you reach ahead of time
+- **Mode of online connection**
+  - Phone
+  - WhatsApp
+  - Zoom, MS Teams, etc.
+- **Number or link to connect**
+- **Time to connect**
+
+### What will you wear for the interview?
+- **Formals vs smart casuals vs casuals**
+- **Suit and Tie** vs **No Suit with Tie** vs **No Tie**
+- **Specific outfit** to wear
+
+### What do you need to carry or keep with you for the interview?
+- CV
+- Certificates
+- Appointment Letters
+- Exhibits
+
+### Things to prepare to do well
+- **Topics** to review
+- **Types of questions** to anticipate
+- **Practice sessions** for preparation
 
