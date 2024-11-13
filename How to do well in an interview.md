@@ -7,7 +7,7 @@
        - [Current Process](#current-process)
    - [Why not consider a process](#why-not-consider-a-process)
    - [Process Overview to do well](#process-overview-to-do-well)
-   - [Introduction and Overview Summary](#introduction-overview-summary)
+   - [Introduction and Overview Summary](#introduction-and-overview-summary)
 - [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview-what-to-plan-and-how)
 
 Current Process Review
