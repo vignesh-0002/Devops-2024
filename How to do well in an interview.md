@@ -1,14 +1,17 @@
 # How to do well in an interview
 
 ## Index
-- [1_introduction and overview](1_introduction-and-overview)
+- [1_introduction and overview](#1_introduction-and-overview)
    - [Introduction](#introduction)
    - [Current Process Review](#current-process-review)
        - [Current Process](#current-process)
    - [Why not consider a process](#why-not-consider-a-process)
    - [Process Overview to do well](#process-overview-to-do-well)
-   - [Introduction & Overview Summary](#introduction--overview-summary)
+   - [Introduction & Overview Summary](#introduction-overview-summary)
 <!--   - [Introduction & Overview Summary](introduction-&-overview-summary) -->
+- [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview-what-to-plan-and-how)
+<!-- - [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview?-what-to-plan-and-how?) -->
+Current Process Review
 
 ## 1_introduction and overview
 
@@ -98,6 +101,10 @@ We have a process that can help you succeed in your interviews by
 - ➢ planning the preparation,
 - ➢ preparing the right things, and
 - ➢ then performing with confidence.
+
+# 2_How to do well in an interview? What to plan and how?
+
+## Current Process Review
 
 
 
