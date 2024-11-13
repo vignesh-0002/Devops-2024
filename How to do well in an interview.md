@@ -7,10 +7,9 @@
        - [Current Process](#current-process)
    - [Why not consider a process](#why-not-consider-a-process)
    - [Process Overview to do well](#process-overview-to-do-well)
-   - [Introduction & Overview Summary](#introduction-overview-summary)
-<!--   - [Introduction & Overview Summary](introduction-&-overview-summary) -->
+   - [Introduction and Overview Summary](#introduction-overview-summary)
 - [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview-what-to-plan-and-how)
-<!-- - [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview?-what-to-plan-and-how?) -->
+
 Current Process Review
 
 ## 1_introduction and overview
@@ -83,7 +82,7 @@ flowchart LR
     A[Plan] --> B[Prepare]
     B --> C[Perform]
 ```
-## Introduction & Overview Summary
+## Introduction and Overview Summary
 
 Most of us either
 - ➢ start revising all the stuff we have learnt, or
