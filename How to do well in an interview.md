@@ -10,7 +10,16 @@
    - [Introduction and Overview Summary](#introduction-and-overview-summary)
 - [2_How to do well in an interview? What to plan and how?](#2_how-to-do-well-in-an-interview-what-to-plan-and-how)
    - [Current Process Review](#current-process-review)
-   - [Current Process and its effectiveness](current-process-and-its-effectiveness)
+   - [Current Process and its effectiveness](#current-process-and-its-effectiveness)
+   - [Why not consider a process that:](#why-not-consider-a-process-that)
+   - [What to Plan for an Interview](#what-to-plan-for-an-interview)
+     - [How will you reach there physically or connect online?](#how-will-you-reach-there-physically-or-connect-online)
+     - [What will you wear for the interview?](#what-will-you-wear-for-the-interview)
+     - [What do you need to carry or keep with you for the interview?](#what-do-you-need-to-carry-or-keep-with-you-for-the-interview)
+     - [Things to prepare to do well](#things-to-prepare-to-do-well)
+
+
+
 ## 1_introduction and overview
 
 ## Introduction
@@ -126,7 +135,7 @@ don’t prepare the right things
 unprepared and not confident in the interview
 + Leading to us not doing well in the interview
 
-## Why not consider a process that.
+## Why not consider a process that:
 + CAN PROVIDE ENOUGH TIME to prepare well
 + Helps you PREAPRE WHAT WILL BE ASKED
 + Helps you PERFORM CONFIDENTLY in the interview
