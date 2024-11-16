@@ -23,6 +23,9 @@
      - [Managing Anxiety During the Interview](#managing-anxiety-during-the-interview)
      - [What Do We Do Today?](#what-do-we-do-today)
      - [Why Consider a New Process?](#why-consider-a-new-process)
+     - [How to Prepare for an Interview](#how-to-prepare-for-an-interview)
+     - [Recap of Learnings](#recap-of-learnings)
+     - [What's Next?](#whats-next)
  
  
 ## 1_introduction and overview
