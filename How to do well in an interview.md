@@ -32,6 +32,8 @@
      - [Crafting Your Answer](#crafting-your-answer)
      - [Adapting Your Answer](#adapting-your-answer)
      - [What to Avoid](#what-to-avoid)
+     - [Example Response](#example-response)
+     - [Final Thoughts](#final-thoughts)
    
  
  
