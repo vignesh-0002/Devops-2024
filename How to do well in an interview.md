@@ -31,6 +31,7 @@
      - [What Are Recruiters Looking For?](#what-are-recruiters-looking-for)
      - [Crafting Your Answer](#crafting-your-answer)
      - [Adapting Your Answer](#adapting-your-answer)
+     - [What to Avoid](#what-to-avoid)
    
  
  
