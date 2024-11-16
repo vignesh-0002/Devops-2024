@@ -26,6 +26,13 @@
      - [How to Prepare for an Interview](#how-to-prepare-for-an-interview)
      - [Recap of Learnings](#recap-of-learnings)
      - [What's Next?](#whats-next)
+ - [4.Welcome to the Lecture on Interview Success](#4welcome-to-the-lecture-on-interview-success)
+     - [Why Is This Question Important?](#why-is-this-question-important)
+     - [What Are Recruiters Looking For?](#what-are-recruiters-looking-for)
+     - [Crafting Your Answer](#crafting-your-answer)
+     - [Adapting Your Answer](#adapting-your-answer)
+   
+ 
  
  
 ## 1_introduction and overview
@@ -398,7 +405,7 @@ In the next session, we will focus on **performance techniques** to ensure you h
 
 Thank you for watching this session on *What to Prepare and How to Prepare.* I hope you found it valuable and look forward to guiding you further.
 
-# Welcome to the Lecture on Interview Success
+# 4.Welcome to the Lecture on Interview Success
 
 In this session, we’ll focus on **how to effectively introduce yourself in an interview**. This includes understanding:
 
