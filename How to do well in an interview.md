@@ -17,9 +17,10 @@
      - [What will you wear for the interview?](#what-will-you-wear-for-the-interview)
      - [What do you need to carry or keep with you for the interview?](#what-do-you-need-to-carry-or-keep-with-you-for-the-interview)
      - [Things to prepare to do well](#things-to-prepare-to-do-well)
-
-
-
+   - [How to plan for an interview](#how-to-plan-for-an-interview)
+   - [What did we learn in this module](#what-did-we-learn-in-this-module)
+  - [Managing Anxiety During the Interview](#managing-anxiety-during-the-interview)
+ 
 ## 1_introduction and overview
 
 ## Introduction
@@ -168,3 +169,92 @@ unprepared and not confident in the interview
 - **Types of questions** to anticipate
 - **Practice sessions** for preparation
 
+## How to plan for an interview
+
+```mermaid
+graph TD
+    A[Start] --> B[Make a list of things to do]
+    B --> C[Estimate time for each task]
+    C --> D[Set an earliest start date for each task]
+    D --> E[Schedule tasks on the calendar]
+    E --> F[Identify the last finishing activity]
+    F --> G[Does the activity exceed the deadline?]
+    G -->|Yes| H[Reduce time for the activity]
+    G -->|No| I[Finalize schedule]
+    H --> E
+    I --> J[End]
+```
+
+| Activity                    | Time (hrs/days)    | Start Day | Day 1 | Day 2 | Day 3 | Day 4  | Day 5 | Day 6 | Day 7 |
+|-----------------------------|--------------------|-----------|-------|-------|-------|--------|-------|-------|-------|
+| Update Resume               | 4 hours            | Day 1     | ✅    |       |       |        |       |       |       |
+| Review Core DevOps Concepts | 5 days (2 hrs/day) | Day 2     |       | ✅    | ✅    | ✅    | ✅    | ✅    |       |
+| Practice Coding Exercises   | 10 days (2 hrs/day)| Day 3     |       | ✅    | ✅    | ✅    | ✅    | ✅    |
+| Mock Interviews             | 3 days (1 hr/day)  | Day 6     |       |       |         |       |       | ✅    | ✅    |
+
+## What did we learn in this module
+ **Most of us don’t properly plan for an interview;** we may just start preparing a day or night ahead!
+
+ **This process is not very effective** for most of us, as we don’t get enough time to prepare and don’t focus on the right things.
+
+ **We need to consider adopting a process** that helps us prepare the right things in time and approach interviews confidently.
+
+ **We now know the key aspects to plan for,** such as:  
+  - How to connect or reach the interview location.  
+  - What to wear and carry.  
+  - What to prepare and practice.
+
+ We also understand how to plan these steps** by creating an **Activity Schedule** to ensure timely and effective preparation, enabling us to feel well-prepared and confident during the interview.
+---
+# Key Points: Managing Job Interview Anxiety
+
+## Understanding Anxiety
+- Anxiety is common during interviews and can vary in levels for different individuals.
+- A certain minimum level of anxiety is beneficial as it provides energy to perform.
+- Anxiety stems from **expectations about the future** and uncertainty regarding outcomes.
+
+## Pre-Interview Anxiety Management
+1. **Understand the Source**:  
+   Anxiety arises from high expectations about future events.  
+   - Balance expectations: Focus on performing your best, not the outcome.
+   - Follow the principle: *Do your duty and let go of the results*.
+
+2. **Preparation is Key**:  
+   - Plan thoroughly: Research the job, review the job description, and anticipate questions.  
+   - Practice:  
+     - Conduct mock interviews.  
+     - Prepare answers to common questions.  
+   - Aim for readiness to perform anytime.  
+
+3. **Channel Energy**:  
+   - Focus your energy on preparation rather than worrying about results.  
+   - Avoid overthinking by staying occupied with actionable steps.
+
+## Managing Anxiety During the Interview
+1. **Self-Talk for Confidence**:  
+   - Remind yourself:  
+     - "I have done my best in preparation."  
+     - "The outcome is not under my control."  
+   - Focus on performing in the moment.
+
+2. **Physical and Mental Alignment**:  
+   - Physical activity:  
+     - Pace the room to balance mental and physical energy.  
+   - Relaxation techniques:  
+     - Practice meditation to calm the mind.  
+     - Use controlled, deep breathing to slow down and stabilize.
+
+## Long-Term Practices
+- **Meditation & Yoga**:  
+  - Regular practice helps in controlling thoughts and reducing anxiety.  
+- **Mindfulness**:  
+  - Develop habits to stay present and reduce overthinking about the future.  
+
+## Additional Resources
+- Explore courses on time management and stress management to build long-term resilience.
+- Look into tools for meditation and mental focus to maintain calmness in stressful situations.
+
+## Key Takeaway
+- Focus on what you can control—preparation and performance.  
+- Let go of the results and trust the process.
+- Embrace the philosophy: *Do your best and leave the rest to the universe.*  
