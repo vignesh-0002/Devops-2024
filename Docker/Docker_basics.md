@@ -111,6 +111,36 @@ And what if we try to run a conntainer with same host port?
 
 `[command]:` The command to be executed inside the container. 
 
+## Simple docker file to run a container.
+```
+# Use the official Nginx image as the base
+FROM nginx:latest
+
+# Copy your custom static site files into the default Nginx directory
+COPY ./static-site /usr/share/nginx/html
+
+# Expose the default Nginx port
+EXPOSE 80
+
+# Command to start Nginx when the container is run
+CMD ["nginx", "-g", "daemon off;"]
+```
++ `FROM nginx:latest` we are instructin to use nginx official Nginx image from Docker Hub.
+`latest` tag ensures the most recent stable version of Nginx is pulled
++ `COPY ./static-site /usr/share/nginx/html` this line is to Copy your local static website files into the default Nginx directory. `./static-site` The source directory on your local machine containing the website files.
+`/usr/share/nginx/html` The default directory in the Nginx container where Nginx looks for files to serve.
++ `EXPOSE 80` This line declares that the container listens on port 80. Port `80` is the default HTTP port that Nginx serves.It's not mandatory to include EXPOSE, but it helps document the intended port.
++ `CMD ["nginx", "-g", "daemon off;"]` This cmd specifies to run when the container starts. `nginx` The Nginx executable.`-g daemon off;` Prevents Nginx from running as a background process (daemon), ensuring it runs in the foreground to keep the container alive.
+## file structure:
+├── Docker</br>
+        ├── Dockerfile</br>
+        ├──static-site/  </br>
+                 ├── index.html          # Main HTML file (required for Nginx to serve by default)
+## What is inside index.html?
+
+
+
+
 
 ## Docker commands to run word press app and mariadb db: 
 ```
