@@ -328,10 +328,42 @@ Now that both containers are on the same bridge network, they should be able to 
 docker exec -it container1 bash
 ```
 `ping <container2_ip_address>`
+### we need to install the following to `ping`
+```
+apt-get update
+apt-get install iputils-ping -y
+
+```
 
 # Docker netwirk commands:
 * `docker network ls`
 * `docker network inspect <network_name_or_id>`
 
+### Create a custom bridge network:
 
-## Overlay Networking:
+```
+docker network create --driver bridge my-bridge-network
+
+```
+* Run container3 on the new network:
+```
+docker run -d --name container3 --network my-bridge-network ubuntu sleep 1000
+```
+* so now we can check the difference between this n/w.
+  
+
+### Overlay Networking:
+
+This model enables communication between containers across different hosts. Technologies like VXLAN or IPSec are often used to create 
+virtual networks that span multiple hosts. 
+
+### Container Network Interfaces (CNI):  
+
+CNI is a specification that defines how container runtimes interact with networking plugins. It allows different container 
+runtimes to be combined with various networking solutions. 
+
+In simple terms, CNI provides the necessary interface to connect containers to networks, ensuring that containers can communicate with each other and with the external world.
+
+* `Modular:` CNI is designed to be modular and pluggable, meaning that different networking plugins can be used based on the requirements.
+* `Cross-platform:` CNI can be used in different container runtimes like Docker, Kubernetes, and others.
+* `Focus on Simplicity:` CNI focuses on the actual network configuration of containers, providing only the necessary functionality to attach a container to a network, assign IP addresses, and ensure connectivity.
