@@ -131,15 +131,45 @@ CMD ["nginx", "-g", "daemon off;"]
 `/usr/share/nginx/html` The default directory in the Nginx container where Nginx looks for files to serve.
 + `EXPOSE 80` This line declares that the container listens on port 80. Port `80` is the default HTTP port that Nginx serves.It's not mandatory to include EXPOSE, but it helps document the intended port.
 + `CMD ["nginx", "-g", "daemon off;"]` This cmd specifies to run when the container starts. `nginx` The Nginx executable.`-g daemon off;` Prevents Nginx from running as a background process (daemon), ensuring it runs in the foreground to keep the container alive.
-## file structure:
-├── Docker</br>
-        ├── Dockerfile</br>
-        ├──static-site/  </br>
-                 ├── index.html          # Main HTML file (required for Nginx to serve by default)
+## File structure:
+    ├── Docker
+    │   ├── Dockerfile
+    │   └── static-site/
+    │       └── index.html  # Main HTML file (required for Nginx to serve by default)
+
 ## What is inside index.html?
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Docker Session</title>
+    <style>
+        /* Style for the body */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('"C:\Users\admin\Downloads\Docker-Temporary-Image-Social-Thumbnail-1200x630-1.png"'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white; /* Text color */
+        }
 
+        /* Style for the heading */
+        h1 {
+            margin-top: 20%;
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, team! Hope you are enjoying this session!!!!</h1>
+</body>
+</html>
 
-
+```
+We have a simple html file to update our existing website files from Nginx 
 
 
 ## Docker commands to run word press app and mariadb db: 
