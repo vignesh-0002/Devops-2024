@@ -375,7 +375,7 @@ CNI operates using plugins to perform the actual network configuration. When a c
 * `Network Attachment:` CNI configures the container's network interface (e.g., eth0) to connect to the network.
 * `Container Cleanup:` When the container is removed, CNI ensures any resources like IP addresses and network interfaces are cleaned up.
 
-#Example in Simple Terms:
+# Example in Simple Terms:
 Imagine you have two containers, like two apps running in a box (a container):
 
 * Without CNI: These apps wouldn’t know how to "talk" to each other, because they wouldn’t have an address or network to connect through.
