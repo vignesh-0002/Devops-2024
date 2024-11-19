@@ -1,5 +1,7 @@
 # Docker 
 - [Why Containers required?](#why-containers-required)
+- [Docker file Instructions:](#docker-file-instructions)
+- [Docker Networks](#docker-networks)
 ## Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
@@ -110,6 +112,86 @@ And what if we try to run a conntainer with same host port?
 `[container_name or container_id]:` The name or ID of the running container. 
 
 `[command]:` The command to be executed inside the container. 
+## Basics of docker file: 
+
+Docker can build images automatically by reading the instructions from a Docker file. 
+
+A Docker file is a text document that contains all the commands a user could call on the command line to assemble an image. 
+
+A Docker image consists of read-only layers each of which represents a Docker file instruction. 
+
+## Command to build image from Docker file: 
+
+`docker build -f <dockerfile_path>` 
+
+## Docker file Instructions: 
+
+Docker file Instructions are used to Create the Docker Images. 
+
+### FROM: 
+
+`FROM:` The FROM instruction initializes a new build stage and sets the Base Image for subsequent instructions. 
+
+A valid Docker file must start with a FROM instruction. 
+
+Base Image can be any valid image. 
+
+### Format: 
+
+`FROM <Image_name>:<Image_tag>` 
+
+### LABEL: 
+
+`LABEL:` LABEL added to image to organize images by project, record licensing information. 
+
+For each label, add a line beginning with LABEL and with one or more key-value pairs. 
+
+`LABEL com.example.version=“0.0.1-beta" `
+
+`LABEL vendor1="ACME Incorporated" `
+
+### RUN: 
+
+`RUN :` RUN instruction will execute any commands in a new layer on top of the current image and commit the results. 
+
+The resulting committed image will be used for the next step in the Dockerfile. 
+```
+FROM ubuntu:14.04 
+
+RUN apt-get update 
+
+RUN apt-get install -y curl 
+```
+### CMD : 
+
+`CMD :` CMD instruction should be used to run the software contained by your image, along with any arguments. </br>
+
+`CMD [“executable","param1","param2"] `
+There can only be one CMD instruction in a Docker file. If you list more than one CMD then only the last CMD will take effect.
+
+### EXPOSE : 
+`EXPOSE :` EXPOSE instruction indicates the ports on which a container listens for connections. </br>
+
+`EXPOSE <port> `
+
+### ENV : 
+
+`ENV :` ENV instruction sets the environment variable to the value. 
+
+To make new software easier to run, you can use ENV to update the PATH environment variable for the software your container installs. 
+
+`ENV PATH /usr/local/nginx/bin:$PATH `
+### ADD : 
+
+`ADD :` ADD instruction copies new files, directories or remote file URLs from and adds them to the filesystem of the image at the path .  
+
+ `ADD hom* /mydir/ # adds all files starting with “hom" `
+### VOLUME : 
+
+`VOLUME :` VOLUME instruction should be used to expose any database storage area, configuration storage, or files/ folders created by your docker container. 
+### WORKDIR : 
+
+`WORKDIR :` WORKDIR instruction sets the working directory for any `RUN,CMD, ADD` instructions that follow it in the Dockerfile.
 
 ## Simple docker file to run a container.
 ```
@@ -130,7 +212,21 @@ CMD ["nginx", "-g", "daemon off;"]
 + `COPY ./static-site /usr/share/nginx/html` this line is to Copy your local static website files into the default Nginx directory. `./static-site` The source directory on your local machine containing the website files.
 `/usr/share/nginx/html` The default directory in the Nginx container where Nginx looks for files to serve.
 + `EXPOSE 80` This line declares that the container listens on port 80. Port `80` is the default HTTP port that Nginx serves.It's not mandatory to include EXPOSE, but it helps document the intended port.
-+ `CMD ["nginx", "-g", "daemon off;"]` This cmd specifies to run when the container starts. `nginx` The Nginx executable.`-g daemon off;` Prevents Nginx from running as a background process (daemon), ensuring it runs in the foreground to keep the container alive.
++ `CMD ["nginx", "-g", "daemon off;"]` The `CMD` instruction specifies the default command to run when a container is started from the Docker image.
+    * nginx
+       `nginx` is the executable command to start the Nginx web server.Launches the Nginx server to serve content `(e.g., websites, APIs, or static files)`
+    * `nginx -g "daemon off;"` This tells Nginx to stay running in the foreground, overriding its default setting to run in the background.
+      * Foreground vs Background Processes:
+      * ## Foreground Process:
+        A process that is active and interacts directly with the user.
+        #### Example:
+        Running a text editor like vim in the terminal.
+      * ## Background Process
+        A process that runs in the background, independent of user interaction.
+        #### Example:
+        Does not occupy the terminal. Running a web server like Nginx or Apache.
+            
+                 
 ## File structure:
     ├── Docker
     │   ├── Dockerfile
@@ -149,10 +245,7 @@ CMD ["nginx", "-g", "daemon off;"]
             margin: 0;
             font-family: Arial, sans-serif;
             text-align: center;
-            background-image: url('"C:\Users\admin\Downloads\Docker-Temporary-Image-Social-Thumbnail-1200x630-1.png"'); /* Replace with your image URL */
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: white; /* Text color */
+            color: blue; /* Text color */
         }
 
         /* Style for the heading */
@@ -169,18 +262,76 @@ CMD ["nginx", "-g", "daemon off;"]
 </html>
 
 ```
-We have a simple html file to update our existing website files from Nginx 
+We need to rn this command where our docker is available:
++ Command to build a docke file: ` docker build -t my-nginx-image .`
++ Command to run a image: `docker run -d -p 8080:80 my-nginx-image`
+
+# Docker Networks
+
+## Docker Network Overview
+Docker networks allow containers to communicate with each other and the host machine. These networks enable seamless communication between containers and services, regardless of the operating systems (Linux, Windows, or a mix) that the Docker hosts are running.
+
+- Containers and services can communicate without needing to be aware of where they are deployed.
+- Each container connects to a virtual private network called **‘bridge’**.
+
+## Bridge Network
+The **bridge** is the default network driver for Docker. Containers deployed in the default bridge network can communicate with each other using their IP addresses. 
+
+### Key Points:
+- The bridge network is isolated within a cluster. Containers in different clusters cannot communicate with each other unless configured differently.
+  
+### Best Practices for Creating Networks
+- **network “sql_php_nwt”**: Use for MySQL and PHP containers.
+- **network “mongo_nwt”**: Use for MongoDB and PHP containers.
+
+## Bridge Networking: 
+
+By default, containers are connected to a Docker bridge 
+
+network, allowing them to communicate with each other on the same host. 
+
+However, containers on different hosts cannot communicate without additional 
+
+configuration.
+
+# lets have a hands on to understand this:
+### Start a Docker container with the default bridge network
+* Run a container (for example, a simple Ubuntu container):
+  ```
+  docker run -d --name container1 ubuntu sleep 1000
+  ```
+* check the container's network settings:
+  ```
+  docker inspect container1
+
+  ```
+### Start another container in the same bridge network
+* container2:
+```
+docker run -d --name container2 ubuntu sleep 1000
+```
+### Check the IP address of each container: 
+* container1
+   ```
+   docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container1
+   ```
+* container2
+  ```
+  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container2
+
+  ```
+### Test communication between the two containers
+Now that both containers are on the same bridge network, they should be able to communicate with each other using their IP addresses.
+* Ping from container1 to container2
+* First, open a shell in container1:
+```
+docker exec -it container1 bash
+```
+`ping <container2_ip_address>`
+
+# Docker netwirk commands:
+* `docker network ls`
+* `docker network inspect <network_name_or_id>`
 
 
-## Docker commands to run word press app and mariadb db: 
-```
-docker container run --detach --env MARIADB_USER=user --env
-MARIADB_PASSWORD=password --env MARIADB_DATABASE=fe-app --env 
-MARIADB_ROOT_PASSWORD=pass  --network wp-app --name fb-app mariadb 
-```
- 
-```
-docker container run -d -e WORDPRESS_DB_HOST=fb-app -e
-WORDPRESS_DB_USER=user -e WORDPRESS_DB_PASSWORD=password -e
-WORDPRESS_DB_NAME=fe-app -p 8080:80 --network wp-app  --name fb-app1 wordpress
-```
+## Overlay Networking:
