@@ -367,3 +367,16 @@ In simple terms, CNI provides the necessary interface to connect containers to n
 * `Modular:` CNI is designed to be modular and pluggable, meaning that different networking plugins can be used based on the requirements.
 * `Cross-platform:` CNI can be used in different container runtimes like Docker, Kubernetes, and others.
 * `Focus on Simplicity:` CNI focuses on the actual network configuration of containers, providing only the necessary functionality to attach a container to a network, assign IP addresses, and ensure connectivity.
+
+CNI operates using plugins to perform the actual network configuration. When a container is started, CNI ensures the following:
+# How CNI Works
+* `Network Creation:` If the container needs to join a network, CNI makes sure the network exists and is ready.
+* `IP Assignment:` CNI assigns an IP address to the container from the available pool.
+* `Network Attachment:` CNI configures the container's network interface (e.g., eth0) to connect to the network.
+* `Container Cleanup:` When the container is removed, CNI ensures any resources like IP addresses and network interfaces are cleaned up.
+
+#Example in Simple Terms:
+Imagine you have two containers, like two apps running in a box (a container):
+
+* Without CNI: These apps wouldn’t know how to "talk" to each other, because they wouldn’t have an address or network to connect through.
+* With CNI: CNI gives each app (container) an address and sets up a network that allows them to communicate, even if one is on a different computer.
