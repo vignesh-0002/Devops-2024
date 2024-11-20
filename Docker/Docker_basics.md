@@ -7,6 +7,9 @@
           - [1.2.4.List running Containers](#124list-running-containers)
           - [1.2.5.Docker Stop Docker Containers](#125docker-stop-docker-containers)
           - [1.2.6.List all running and stopped containers](#126list-all-running-and-stopped-containers)
+          - [1.2.7.Run vs Start Container](#127run-vs-start-container)
+          - [1.2.8.Docker container names](#128docker-container-names)
+          - [1.2.9.See logs of a specific container](#129see-logs-of-a-specific-container)
      - [1.2.Commands](#12commands)
           - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
           - [1.2.2.Stop Container foreground process](#122stop-container-foreground-process)
@@ -80,17 +83,17 @@ And what if we try to run a conntainer with same host port?
 
 + `docker containers ls –a `
 
-## Run vs Start Container 
+### 1.2.7.Run vs Start Container 
 
 `run:` start a new container always 
 
 `start:` start an existing container 
 
-## Docker container names 
+### 1.2.8.Docker container names 
 
 `docker container run - -publish 80:80 - -detach - -name <Name> <Image_Name>` 
 
-## See logs of a specific container 
+### 1.2.9.See logs of a specific container 
 
 `docker container logs <container_name>/<container_id>` 
 
