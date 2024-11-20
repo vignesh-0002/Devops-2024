@@ -251,7 +251,7 @@ CMD ["nginx", "-g", "daemon off;"]
     * nginx
        `nginx` is the executable command to start the Nginx web server.Launches the Nginx server to serve content `(e.g., websites, APIs, or static files)`
     * `nginx -g "daemon off;"` This tells Nginx to stay running in the foreground, overriding its default setting to run in the background.
-      * Foreground vs Background Processes:
+      * # Foreground vs Background Processes:
       * ## Foreground Process:
         A process that is active and interacts directly with the user.
         #### Example:
