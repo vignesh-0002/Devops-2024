@@ -51,7 +51,11 @@
            - [Create a custom bridge network:](#create-a-custom-bridge-network)
      - [Overlay Networking:](#overlay-networking)
      - [How CNI Works:](#how-cni-works)
-- [Example in Simple Terms:](#example-in-simple-terms) 
+     - [Example in Simple Terms:](#example-in-simple-terms)
+  - [4.Volume:](#4volume)
+    - [4.1.Characteristics of Docker Volumes:](#41characteristics-of-docker-volumes)
+
+  
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
@@ -425,8 +429,18 @@ CNI operates using plugins to perform the actual network configuration. When a c
 * `Network Attachment:` CNI configures the container's network interface (e.g., eth0) to connect to the network.
 * `Container Cleanup:` When the container is removed, CNI ensures any resources like IP addresses and network interfaces are cleaned up.
 
-# Example in Simple Terms:
+### Example in Simple Terms:
 Imagine you have two containers, like two apps running in a box (a container):
 
 * Without CNI: These apps wouldn’t know how to "talk" to each other, because they wouldn’t have an address or network to connect through.
 * With CNI: CNI gives each app (container) an address and sets up a network that allows them to communicate, even if one is on a different computer.
+
+# 4.Volume:
+
++ A Docker volume is a storage mechanism that allows containers to persist data outside their ephemeral filesystem. 
++ By default, data inside a Docker container is temporary and tied to the lifecycle of that container.
++ When a container is removed, all its data is lost.
++ Volumes solve this issue by providing a way to store data that can persist beyond the container's lifecycle and can also be shared among multiple containers.
+
+## 4.1:Characteristics of Docker Volumes:
+  
