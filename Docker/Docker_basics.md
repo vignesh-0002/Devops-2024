@@ -3,6 +3,9 @@
      - [1.1.Container Image and Containers](#11container-image-and-containers)
           - [1.1.1.What is a Container Image?](#111what-is-a-container-image)
           - [1.1.2.What is a container?](#112what-is-a-container)
+     - [1.2.Commands](#12commands)
+          - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
+          - [1.2.2.Stop Container foreground process](#122stop-container-foreground-process)                                           
           - [1.2.3.Start Container in Background or detach mode](#123start-container-in-background-or-detach-mode)
           - [1.2.4.List running Containers](#124list-running-containers)
           - [1.2.5.Docker Stop Docker Containers](#125docker-stop-docker-containers)
@@ -16,11 +19,6 @@
           - [1.2.13.Get detailed information about a container](#1213get-detailed-information-about-a-container)
           - [1.2.14.Start Container in Interactive Mode ](#1214start-container-in-interactive-mode)
           - [1.2.15.Run Commands in Running Containers](#1215run-commands-in-running-containers)
-
-     - [1.2.Commands](#12commands)
-          - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
-          - [1.2.2.Stop Container foreground process](#122stop-container-foreground-process)
-        
               
 - [Docker file Instructions:](#docker-file-instructions)
 - [Docker Networks](#docker-networks)
