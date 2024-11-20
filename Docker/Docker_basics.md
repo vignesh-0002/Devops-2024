@@ -19,9 +19,21 @@
           - [1.2.13.Get detailed information about a container](#1213get-detailed-information-about-a-container)
           - [1.2.14.Start Container in Interactive Mode ](#1214start-container-in-interactive-mode)
           - [1.2.15.Run Commands in Running Containers](#1215run-commands-in-running-containers)
-              
-- [Docker file Instructions:](#docker-file-instructions)
-- [Docker Networks](#docker-networks)
+- [2.Basics of docker file:](#2basics-of-docker-file)
+     - [2.1.Command to build image from Docker file:](#21command-to-build-image-from-docker-file)
+     - [2.2.Docker file Instructions](#21docker-file-instructions)
+        - [FROM:](#from)       
+        - [Format:](#format)
+        - [LABEL:](#label)
+        - [RUN:](#run)
+        - [CMD:](#cmd)
+        - [EXPOSE :](#expose)
+        - [ENV :](#env)
+        - [ADD :](#add)
+        - [VOLUME :](#volume)
+        - [WORKDIR :](#workdir)
+        - [Simple docker file to run a container.](#simple-docker-file-to-run-a-container)
+        - [Docker Networks](#docker-networks)
 
 
 
@@ -135,7 +147,7 @@ And what if we try to run a conntainer with same host port?
 `[container_name or container_id]:` The name or ID of the running container. 
 
 `[command]:` The command to be executed inside the container. 
-## Basics of docker file: 
+## 2.Basics of docker file: 
 
 Docker can build images automatically by reading the instructions from a Docker file. 
 
@@ -143,15 +155,15 @@ A Docker file is a text document that contains all the commands a user could cal
 
 A Docker image consists of read-only layers each of which represents a Docker file instruction. 
 
-## Command to build image from Docker file: 
+### 2.1.Command to build image from Docker file: 
 
 `docker build -f <dockerfile_path>` 
 
-## Docker file Instructions: 
+### 2.2.Docker file Instructions: 
 
 Docker file Instructions are used to Create the Docker Images. 
 
-### FROM: 
+#### FROM: 
 
 `FROM:` The FROM instruction initializes a new build stage and sets the Base Image for subsequent instructions. 
 
@@ -159,11 +171,11 @@ A valid Docker file must start with a FROM instruction.
 
 Base Image can be any valid image. 
 
-### Format: 
+#### Format: 
 
 `FROM <Image_name>:<Image_tag>` 
 
-### LABEL: 
+#### LABEL: 
 
 `LABEL:` LABEL added to image to organize images by project, record licensing information. 
 
@@ -173,7 +185,7 @@ For each label, add a line beginning with LABEL and with one or more key-value p
 
 `LABEL vendor1="ACME Incorporated" `
 
-### RUN: 
+#### RUN: 
 
 `RUN :` RUN instruction will execute any commands in a new layer on top of the current image and commit the results. 
 
@@ -185,34 +197,34 @@ RUN apt-get update
 
 RUN apt-get install -y curl 
 ```
-### CMD : 
+#### CMD : 
 
 `CMD :` CMD instruction should be used to run the software contained by your image, along with any arguments. </br>
 
 `CMD [“executable","param1","param2"] `
 There can only be one CMD instruction in a Docker file. If you list more than one CMD then only the last CMD will take effect.
 
-### EXPOSE : 
+#### EXPOSE : 
 `EXPOSE :` EXPOSE instruction indicates the ports on which a container listens for connections. </br>
 
 `EXPOSE <port> `
 
-### ENV : 
+#### ENV : 
 
 `ENV :` ENV instruction sets the environment variable to the value. 
 
 To make new software easier to run, you can use ENV to update the PATH environment variable for the software your container installs. 
 
 `ENV PATH /usr/local/nginx/bin:$PATH `
-### ADD : 
+#### ADD : 
 
 `ADD :` ADD instruction copies new files, directories or remote file URLs from and adds them to the filesystem of the image at the path .  
 
  `ADD hom* /mydir/ # adds all files starting with “hom" `
-### VOLUME : 
+#### VOLUME : 
 
 `VOLUME :` VOLUME instruction should be used to expose any database storage area, configuration storage, or files/ folders created by your docker container. 
-### WORKDIR : 
+#### WORKDIR : 
 
 `WORKDIR :` WORKDIR instruction sets the working directory for any `RUN,CMD, ADD` instructions that follow it in the Dockerfile.
 
