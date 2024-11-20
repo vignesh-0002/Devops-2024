@@ -4,7 +4,8 @@
           - [1.1.1.What is a Container Image?](#111what-is-a-container-image)
           - [1.1.2.What is a container?](#112what-is-a-container)
      - [1.2.Commands](#12commands)
-              - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
+          - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
+          - [1.2.2.Stop Container foreground process](#122stop-container-foreground-process)
               
 - [Docker file Instructions:](#docker-file-instructions)
 - [Docker Networks](#docker-networks)
@@ -48,7 +49,7 @@ And what if we try to run a conntainer with same host port?
 ### Docker container:
 ![image](https://github.com/user-attachments/assets/a817cb17-d7ed-45c0-8bf7-ceeb9be0ad26)
 
-## Stop Container foreground process 
+### 1.2.2.Stop Container foreground process 
 
 `ctrl+c` 
 
