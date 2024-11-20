@@ -48,6 +48,7 @@
            - [Check the IP address of each container:](#check-the-ip-address-of-each-container)
            - [we need to install the following tool to `ping` in docker container:](#we-need-to-install-the-following-tool-to-ping-in-docker-container)
            - [Docker network commands:](#docker-network-commands)
+           - [Create a custom bridge network:](#create-a-custom-bridge-network)
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
