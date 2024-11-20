@@ -442,5 +442,8 @@ Imagine you have two containers, like two apps running in a box (a container):
 + When a container is removed, all its data is lost.
 + Volumes solve this issue by providing a way to store data that can persist beyond the container's lifecycle and can also be shared among multiple containers.
 
-## 4.1:Characteristics of Docker Volumes:
-  
+## 4.1.Characteristics of Docker Volumes:
+  * `Managed by Docker:` Volumes are created and managed by Docker, independent of the host's filesystem.
+  * `Persistence:` Data stored in a volume is not tied to a specific container and remains available even if the container is deleted.
+  * `Shared Access:` Multiple containers can access the same volume, making it useful for sharing data between containers.
+  * `Decoupling:` Volumes abstract the storage from the container, so containers are portable and can run on different hosts without losing data.
