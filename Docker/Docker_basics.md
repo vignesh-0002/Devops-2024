@@ -33,7 +33,11 @@
         - [VOLUME :](#volume)
         - [WORKDIR :](#workdir)
         - [Simple docker file to run a container.](#simple-docker-file-to-run-a-container)
-        - [Docker Networks](#docker-networks)
+           - [Foreground vs Background Processes:](#foreground-vs-background-processes)
+               - [Foreground Process:](#foreground-process)
+               - [Background Process](#background-process)
+               - [File structure:](#file-structure) (File structure of the docker file and index.html in our local machine)
+  - [Docker Networks](#docker-networks)
 
 
 
@@ -256,13 +260,13 @@ CMD ["nginx", "-g", "daemon off;"]
         A process that is active and interacts directly with the user.
         #### Example:
         Running a text editor like vim in the terminal.
-      * ## Background Process
+      * ## Background Process:
         A process that runs in the background, independent of user interaction.
         #### Example:
         Does not occupy the terminal. Running a web server like Nginx or Apache.
             
                  
-## File structure:
+### File structure:
     ├── Docker
     │   ├── Dockerfile
     │   └── static-site/
