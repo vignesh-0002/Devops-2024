@@ -1,8 +1,11 @@
 # Docker 
 - [1.Why Containers required?](#1.why-containers-required)
      - [1.1.Container Image and Containers](#1.1.container-image-and-containers)
-     - [1.1.1.What is a Container Image?](#111what-is-a-container-image)
-     - [1.1.2.What is a container?](#112what-is-a-container)
+          - [1.1.1.What is a Container Image?](#111what-is-a-container-image)
+          - [1.1.2.What is a container?](#112what-is-a-container)
+     - [1.2.Commands](#12commands)
+              - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
+              
 - [Docker file Instructions:](#docker-file-instructions)
 - [Docker Networks](#docker-networks)
 ## 1.Why Containers required? 
@@ -23,9 +26,9 @@ A container image is a lightweight, standalone package that includes everything 
 
 ---
 
-## Commands
+## 1.2.Commands
 
-### Command to Run a Container
+### 1.2.1.Command to Run a Container
 
 Syntax: docker container run --publish <host_port:container_port> <image_name>
 ## Example:
