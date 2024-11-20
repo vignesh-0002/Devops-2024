@@ -42,8 +42,9 @@
      - [3.1.Docker Network Overview:](#31docker-network-overview)
      - [3.2.Bridge Network](#32bridge-network)
         - [3.2.1.Best Practices for Creating Networks](#321best-practices-for-creating-networks) 
-        - [3.2.2.lets have a hands on to understand this:](#lets-have-a-hands-on-to-understand-this)
+        - [3.2.2.lets have a hands on to understand this:](#322lets-have-a-hands-on-to-understand-this)
            - [Start a Docker container with the default bridge network:](#start-a-docker-container-with-the-default-bridge-network)
+           - []
            - []
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
