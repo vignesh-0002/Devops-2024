@@ -21,7 +21,7 @@
           - [1.2.15.Run Commands in Running Containers](#1215run-commands-in-running-containers)
 - [2.Basics of docker file:](#2basics-of-docker-file)
      - [2.1.Command to build image from Docker file:](#21command-to-build-image-from-docker-file)
-     - [2.2.Docker file Instructions](#21docker-file-instructions)
+     - [2.2.Docker file Instructions.](#21docker-file-instructions)
         - [FROM:](#from)       
         - [Format:](#format)
         - [LABEL:](#label)
