@@ -40,6 +40,7 @@
                - [What is inside index.html?](#what-is-inside-indexhtml)
   - [3.Docker Networks:](#3docker-networks)
      - [3.1.Docker Network Overview:](#31docker-network-overview)
+     - [3.2.Bridge Network](#32bridge-network)
 
 
 
@@ -315,7 +316,7 @@ Docker networks allow containers to communicate with each other and the host mac
 - Containers and services can communicate without needing to be aware of where they are deployed.
 - Each container connects to a virtual private network called **‘bridge’**.
 
-## Bridge Network
+## 3.2.Bridge Network
 The **bridge** is the default network driver for Docker. Containers deployed in the default bridge network can communicate with each other using their IP addresses. 
 
 ### Key Points:
