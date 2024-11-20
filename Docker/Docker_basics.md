@@ -51,6 +51,7 @@
            - [Create a custom bridge network:](#create-a-custom-bridge-network)
      - [Overlay Networking:](#overlay-networking)
      - [How CNI Works:](#how-cni-works)
+- [Example in Simple Terms:](#example-in-simple-terms) 
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
