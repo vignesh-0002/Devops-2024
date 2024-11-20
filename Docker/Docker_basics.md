@@ -494,7 +494,7 @@ docker volume inspect my_volume
 docker volume prune
 ```
 
-Volumes are integral in scenarios like databases or applications that need to persist logs, configurations, or user-generated data. Let me know if you’d like to explore specific use cases!
+
 
 
 
