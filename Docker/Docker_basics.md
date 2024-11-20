@@ -10,9 +10,17 @@
           - [1.2.7.Run vs Start Container](#127run-vs-start-container)
           - [1.2.8.Docker container names](#128docker-container-names)
           - [1.2.9.See logs of a specific container](#129see-logs-of-a-specific-container)
+          - [1.2.10.See process running inside the containers](#1210see-process-running-inside-the-containers)
+          - [1.2.11.Remove all unused containers](#1211remove-all-unused-containers)
+          - [1.2.12.View Docker container Resource Consumption](#1212view-docker-container-resource-consumption)
+          - [1.2.13.Get detailed information about a container](#1213get-detailed-information-about-a-container)
+          - [1.2.14.Start Container in Interactive Mode ](#1214start-container-in-interactive-mode)
+          - [1.2.15.Run Commands in Running Containers](#1215run-commands-in-running-containers)
+
      - [1.2.Commands](#12commands)
           - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
           - [1.2.2.Stop Container foreground process](#122stop-container-foreground-process)
+        
               
 - [Docker file Instructions:](#docker-file-instructions)
 - [Docker Networks](#docker-networks)
@@ -97,30 +105,30 @@ And what if we try to run a conntainer with same host port?
 
 `docker container logs <container_name>/<container_id>` 
 
-## See process running inside the containers 
+### 1.2.10.See process running inside the containers 
 
 `docker container top <container_id>`
 
-## Remove all unused containers 
+### 1.2.11.Remove all unused containers 
 
 `docker container rm <space separated container ids>` 
 
-## View Docker container Resource Consumption 
+### 1.2.12.View Docker container Resource Consumption 
 
 `docker stats [container_name or container_id] `
 
-## Get detailed information about a container 
+### 1.2.13.Get detailed information about a container 
 
 `docker inspect [container_name or container_id] `
 
-## Start Container in Interactive Mode 
+### 1.2.14.Start Container in Interactive Mode 
 
 `docker run -it [image_name or image_id] [command] `
 
 `-i: Keep STDIN open even if not attached. `
 `-t: Allocate a pseudo-TTY (terminal). `
 
-## Run Commands in Running Containers 
+## 1.2.15.Run Commands in Running Containers 
 
 `docker exec [options] [container_name or container_id] [command] `
 
