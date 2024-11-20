@@ -46,6 +46,8 @@
            - [Start a Docker container with the default bridge network:](#start-a-docker-container-with-the-default-bridge-network)
            - [Start another container in the same bridge network](#start-another-container-in-the-same-bridge-network)
            - [Check the IP address of each container:](#check-the-ip-address-of-each-container)
+           - [we need to install the following tool to `ping` in docker container:](#we-need-to-install-the-following-tool-to-ping-in-docker-container)
+           - 
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
@@ -372,7 +374,7 @@ Now that both containers are on the same bridge network, they should be able to 
 docker exec -it container1 bash
 ```
 `ping <container2_ip_address>`
-### we need to install the following to `ping`
+### we need to install the following tool to `ping` in docker container:
 ```
 apt-get update
 apt-get install iputils-ping -y
