@@ -1,14 +1,21 @@
 # Docker 
-- [1.Why Containers required?](#1.why-containers-required)
-     - [1.1.Container Image and Containers](#1.1.container-image-and-containers)
+- [1.Why Containers required?](#1why-containers-required)
+     - [1.1.Container Image and Containers](#11container-image-and-containers)
           - [1.1.1.What is a Container Image?](#111what-is-a-container-image)
           - [1.1.2.What is a container?](#112what-is-a-container)
+          - [1.2.3.Start Container in Background or detach mode](#123start-container-in-background-or-detach-mode)
+          - [1.2.4.List running Containers](#124list-running-containers)
+          - [1.2.5.Docker Stop Docker Containers](#125docker-stop-docker-containers)
+          - [1.2.6.List all running and stopped containers](#126list-all-running-and-stopped-containers)
      - [1.2.Commands](#12commands)
           - [1.2.1.Command to Run a Container](#121command-to-run-a-container)
           - [1.2.2.Stop Container foreground process](#122stop-container-foreground-process)
               
 - [Docker file Instructions:](#docker-file-instructions)
 - [Docker Networks](#docker-networks)
+
+
+
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
@@ -53,21 +60,21 @@ And what if we try to run a conntainer with same host port?
 
 `ctrl+c` 
 
-## Start Container in Background or detach mode 
+### 1.2.3.Start Container in Background or detach mode 
 
 `docker container run - -publish <host_port:container_port> - -detach <image_name> `
 
-## List running Containers 
+### 1.2.4.List running Containers 
 
  + `docker container ls ` 
 
 + `docker ps` (Old Way)
 
-## Docker Stop Docker Containers 
+### 1.2.5.Docker Stop Docker Containers 
 
 ```docker container stop <container_id>``` 
 
-## List all running and stopped containers 
+### 1.2.6.List all running and stopped containers 
 
 + `docker containers ls` 
 
