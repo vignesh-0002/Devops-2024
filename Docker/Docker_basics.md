@@ -49,6 +49,8 @@
            - [we need to install the following tool to `ping` in docker container:](#we-need-to-install-the-following-tool-to-ping-in-docker-container)
            - [Docker network commands:](#docker-network-commands)
            - [Create a custom bridge network:](#create-a-custom-bridge-network)
+     - [Overlay Networking:](#overlay-networking)
+     - [How CNI Works:](#how-cni-works)
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
@@ -404,7 +406,7 @@ docker run -d --name container3 --network my-bridge-network ubuntu sleep 1000
 This model enables communication between containers across different hosts. Technologies like VXLAN or IPSec are often used to create 
 virtual networks that span multiple hosts. 
 
-### Container Network Interfaces (CNI):  
+# Container Network Interfaces (CNI):  
 
 CNI is a specification that defines how container runtimes interact with networking plugins. It allows different container 
 runtimes to be combined with various networking solutions. 
@@ -416,7 +418,7 @@ In simple terms, CNI provides the necessary interface to connect containers to n
 * `Focus on Simplicity:` CNI focuses on the actual network configuration of containers, providing only the necessary functionality to attach a container to a network, assign IP addresses, and ensure connectivity.
 
 CNI operates using plugins to perform the actual network configuration. When a container is started, CNI ensures the following:
-# How CNI Works
+## How CNI Works:
 * `Network Creation:` If the container needs to join a network, CNI makes sure the network exists and is ready.
 * `IP Assignment:` CNI assigns an IP address to the container from the available pool.
 * `Network Attachment:` CNI configures the container's network interface (e.g., eth0) to connect to the network.
