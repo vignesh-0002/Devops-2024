@@ -54,12 +54,12 @@
      - [Example in Simple Terms:](#example-in-simple-terms)
   - [4.Volume:](#4volume)
     - [4.1.Characteristics of Docker Volumes:](#41characteristics-of-docker-volumes)
-       - [4.2.Types of Docker Volumes:](#42types-of-docker-volumes)
+    - [4.2.Types of Docker Volumes:](#42types-of-docker-volumes)
            - [Named Volumes:](#named-volumes)
            - [Anonymous Volumes:](#anonymous-volumes)
            - [Bind Mounts:](#bind-mounts)
-    - [Advantages of Using Volumes:](#advantages-of-using-volumes)
-
+    - [4.3.Advantages of Using Volumes:](#43advantages-of-using-volumes)
+      - [Common Commands:](#common-commands)
   
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
@@ -469,7 +469,7 @@ Imagine you have two containers, like two apps running in a box (a container):
     ```
     docker run -v /host/path:/container/path my_image
     ```
-### Advantages of Using Volumes:
+### 4.3.Advantages of Using Volumes:
 
 * Independence from the host OS filesystem structure.
 * Better performance compared to bind mounts in most scenarios.
