@@ -57,6 +57,7 @@
        - [4.2.Types of Docker Volumes:](#42types-of-docker-volumes)
            - [Named Volumes:](#named-volumes)
            - [Anonymous Volumes:](#anonymous-volumes)
+           - [Bind Mounts:](bind-mounts)
   
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
