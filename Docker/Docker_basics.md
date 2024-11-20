@@ -197,34 +197,34 @@ RUN apt-get update
 
 RUN apt-get install -y curl 
 ```
-#### CMD : 
+#### CMD: 
 
 `CMD :` CMD instruction should be used to run the software contained by your image, along with any arguments. </br>
 
 `CMD [“executable","param1","param2"] `
 There can only be one CMD instruction in a Docker file. If you list more than one CMD then only the last CMD will take effect.
 
-#### EXPOSE : 
+#### EXPOSE: 
 `EXPOSE :` EXPOSE instruction indicates the ports on which a container listens for connections. </br>
 
 `EXPOSE <port> `
 
-#### ENV : 
+#### ENV: 
 
 `ENV :` ENV instruction sets the environment variable to the value. 
 
 To make new software easier to run, you can use ENV to update the PATH environment variable for the software your container installs. 
 
 `ENV PATH /usr/local/nginx/bin:$PATH `
-#### ADD : 
+#### ADD: 
 
 `ADD :` ADD instruction copies new files, directories or remote file URLs from and adds them to the filesystem of the image at the path .  
 
  `ADD hom* /mydir/ # adds all files starting with “hom" `
-#### VOLUME : 
+#### VOLUME: 
 
 `VOLUME :` VOLUME instruction should be used to expose any database storage area, configuration storage, or files/ folders created by your docker container. 
-#### WORKDIR : 
+#### WORKDIR: 
 
 `WORKDIR :` WORKDIR instruction sets the working directory for any `RUN,CMD, ADD` instructions that follow it in the Dockerfile.
 
