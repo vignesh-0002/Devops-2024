@@ -37,7 +37,9 @@
                - [Foreground Process:](#foreground-process)
                - [Background Process](#background-process)
                - [File structure:](#file-structure) (File structure of the docker file and index.html in our local machine)
-  - [Docker Networks](#docker-networks)
+               - [What is inside index.html?](#what-is-inside-indexhtml)
+  - [3.Docker Networks:](#3docker-networks)
+     - [3.1.Docker Network Overview:](#31docker-network-overview)
 
 
 
@@ -305,9 +307,9 @@ We need to rn this command where our docker is available:
 + Command to build a docke file: ` docker build -t my-nginx-image .`
 + Command to run a image: `docker run -d -p 8080:80 my-nginx-image`
 
-# Docker Networks
+# 3.Docker Networks:
 
-## Docker Network Overview
+## 3.1.Docker Network Overview:
 Docker networks allow containers to communicate with each other and the host machine. These networks enable seamless communication between containers and services, regardless of the operating systems (Linux, Windows, or a mix) that the Docker hosts are running.
 
 - Containers and services can communicate without needing to be aware of where they are deployed.
