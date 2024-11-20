@@ -1,22 +1,23 @@
 # Docker 
-- [Why Containers required?](#why-containers-required)
-     - [Container Image and Containers](#container-image-and-containers)
-     - []
+- [1.Why Containers required?](#1.why-containers-required)
+     - [1.1.Container Image and Containers](#1.1.container-image-and-containers)
+     - [1.1.1.What is a Container Image?](#111what-is-a-container-image)
+     - [1.1.2.What is a container?](#112what-is-a-container)
 - [Docker file Instructions:](#docker-file-instructions)
 - [Docker Networks](#docker-networks)
-## Why Containers required? 
+## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
-## Container Image and Containers
+## 1.1.Container Image and Containers
 
-### What is a Container Image?  
+### 1.1.1.What is a Container Image?  
 A container image is a lightweight, standalone package that includes everything needed to run a piece of software, including:
 - Code
 - Runtime
 - System tools
 - Libraries  
 
-### What is a Container?  
+### 1.1.2.what is a Container?  
 - A **container** is a running instance of an image.  
 - You can have many containers running from the same image.
 
