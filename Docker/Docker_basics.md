@@ -54,7 +54,9 @@
      - [Example in Simple Terms:](#example-in-simple-terms)
   - [4.Volume:](#4volume)
     - [4.1.Characteristics of Docker Volumes:](#41characteristics-of-docker-volumes)
-
+       - [4.2.Types of Docker Volumes:](#42types-of-docker-volumes)
+           - [Named Volumes:](#named-volumes)
+           - [Anonymous Volumes:](#anonymous-volumes)
   
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
@@ -447,7 +449,7 @@ Imagine you have two containers, like two apps running in a box (a container):
   * `Persistence:` Data stored in a volume is not tied to a specific container and remains available even if the container is deleted.
   * `Shared Access:` Multiple containers can access the same volume, making it useful for sharing data between containers.
   * `Decoupling:` Volumes abstract the storage from the container, so containers are portable and can run on different hosts without losing data.
-### Types of Docker Volumes:
+## 4.2.Types of Docker Volumes:
   * #### Named Volumes:
     Managed by Docker and stored in Docker's default storage location (e.g., /var/lib/docker/volumes/ on Linux). You refer to them by a name.
     ```
