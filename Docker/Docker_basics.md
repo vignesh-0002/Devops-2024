@@ -41,9 +41,10 @@
   - [3.Docker Networks:](#3docker-networks)
      - [3.1.Docker Network Overview:](#31docker-network-overview)
      - [3.2.Bridge Network](#32bridge-network)
-
-
-
+        - [3.2.1.Best Practices for Creating Networks](#321best-practices-for-creating-networks) 
+        - [3.2.2.lets have a hands on to understand this:](#lets-have-a-hands-on-to-understand-this)
+           - [Start a Docker container with the default bridge network:](#start-a-docker-container-with-the-default-bridge-network)
+           - []
 ## 1.Why Containers required? 
 Containers are required for efficient and consistent application deployment and management, ensuring portability and scalability across different environments.  
 
@@ -322,7 +323,7 @@ The **bridge** is the default network driver for Docker. Containers deployed in 
 ### Key Points:
 - The bridge network is isolated within a cluster. Containers in different clusters cannot communicate with each other unless configured differently.
   
-### Best Practices for Creating Networks
+### 3.2.1.Best Practices for Creating Networks
 - **network “sql_php_nwt”**: Use for MySQL and PHP containers.
 - **network “mongo_nwt”**: Use for MongoDB and PHP containers.
 
@@ -336,8 +337,8 @@ However, containers on different hosts cannot communicate without additional
 
 configuration.
 
-# lets have a hands on to understand this:
-### Start a Docker container with the default bridge network
+### 3.2.2.lets have a hands on to understand this:
+### Start a Docker container with the default bridge network:
 * Run a container (for example, a simple Ubuntu container):
   ```
   docker run -d --name container1 ubuntu sleep 1000
