@@ -554,3 +554,9 @@ Command to inspect our docker container:
 ```
 * We don have any volume mounted for our container:
 ` "Volumes": null`
+#### 2. Stop the Container
+You can't directly attach a volume to a running container. You'll need to stop the container first:
+```
+docker stop <container_name_or_id>
+docker stop 8320d953ea85
+```
