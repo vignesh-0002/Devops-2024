@@ -494,10 +494,63 @@ docker volume inspect my_volume
 docker volume prune
 ```
 
+### 4.4.Docker container hands-on:
+To attach a volume to an existing Docker container, you can follow these steps:
+#### 1.Check the Current Container Setup:
+Before making changes, examine the container's current setup:
+```
+docker inspect <container_name_or_id>
+```
+We already have a nginx container runninng on our host machine.
 
 
+<img width="866" alt="image" src="https://github.com/user-attachments/assets/d04fc2c8-5d50-47a1-8c6d-ddee5118d111">
 
 
-
-
-
+Command to inspect our docker container:
+`docker inspect 8320d953ea85`
+* Look for the Mounts section to see the existing volumes or bind mounts.
+#### Mount section:
+```
+ "Mounts": [],
+        "Config": {
+            "Hostname": "8320d953ea85",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.27.2",
+                "NJS_VERSION=0.8.6",
+                "NJS_RELEASE=1~bookworm",
+                "PKG_RELEASE=1~bookworm",
+                "DYNPKG_RELEASE=1~bookworm"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Image": "my-nginx-image",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+            },
+            "StopSignal": "SIGQUIT"
+        }
+```
+* We don have any volume mounted for our container:
+` "Volumes": null`
