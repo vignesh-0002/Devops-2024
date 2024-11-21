@@ -560,3 +560,41 @@ You can't directly attach a volume to a running container. You'll need to stop t
 docker stop <container_name_or_id>
 docker stop 8320d953ea85
 ```
+#### 3. Create or Identify the Volume
+If you don’t already have a volume, create one using:
+`docker volume create <volume_name>` but don't worry we already have our volume.
+ * `docker volume ls`:`local     my_volume_vignesh`
+#### 4. Re-run the Container with the Volume
+Use the docker run command to re-create the container with the volume attached. Use the same options you used to originally start the container but include the -v or --mount flag to specify the volume:
+
+```
+docker run \
+  -v <volume_name>:/path/in/container \
+  --name <container_name> \
+  <original_image> <original_command>
+```
+So we cannot attach a volume to the existing container so we are going to stop and kill the previous container and going to create a new one.
+```
+docker run -d \
+  --name nginx-with-volume \
+  --mount source=my_volume_vignesh,target=/usr/share/nginx/html \
+  -p 8081:80 \
+  my-nginx-image
+```
+
+##### Explanation:
+* `docker run:` This command creates and starts a new container from a specified image.
+
+* `-d:` Runs the container in detached mode, meaning it runs in the background.
+
+* `--name nginx-with-volume:` Assigns the name nginx-with-volume to the new container for easier reference.
+
+* `--mount source=my_volume_vignesh,target=/usr/share/nginx/html:` Attaches the Docker volume my_volume_vignesh to the container at the specified target directory (/usr/share/nginx/html).
+
+* `source=my_volume_vignesh:` Refers to the Docker volume named my_volume_vignesh.
+* `target=/usr/share/nginx/html:` Specifies the directory inside the container where the volume's content will be accessible. For NGINX, this is the default directory where it serves static files (like HTML, CSS, etc.).
+* `-p 8081:80:` Maps the container's internal port 80 (used by NGINX) to port 8081 on the host machine. You can access the NGINX server via http://localhost:8081.
+
+* `my-nginx-image:` Specifies the Docker image to use when creating the container. Here, it’s a custom image named my-nginx-image.
+
+
