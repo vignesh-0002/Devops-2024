@@ -160,4 +160,23 @@ COPY index.html /usr/share/nginx/html/
 # Expose port 80
 EXPOSE 80
 ```
+# Step 4: Build and Run the Docker Image
+* Navigate to the project directory:
+
+```
+PWD
+/home/vignesh/docker/nginx
+```
+* Build the Docker image:
+
+```
+docker build -t simple-nginx-app .
+```
+* Run the Docker container:
+
+```
+docker run -d -p 8080:8080 --name nginx-container simple-nginx-app
+```
+Access the application: Open your browser and go to http://localhost:8080. You should see the static HTML page served by Nginx.
+
 
