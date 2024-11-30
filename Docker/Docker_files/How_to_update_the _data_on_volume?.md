@@ -24,7 +24,8 @@ This command runs an Alpine Linux container and mounts the nginx-data volume to 
 Now that you are inside the container, you can modify the files within the /data directory (which corresponds to your mounted volume).
 For example, to add a new HTML file:
 ```
-echo "<html><h1>New Content!</h1></html>" > /data/newfile.html
+nano /usr/share/nginx/html/index.html
+<h1>Modify the volume data from a temporary container with the volume mounted (Method 1)</h1>
 ```
 ### 3. Verify the changes:
 
