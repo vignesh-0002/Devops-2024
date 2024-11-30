@@ -1,7 +1,7 @@
 # Step 1: Create the Volume
 You can create a named Docker volume using the docker volume create command:
 ```
-docker volume create nginx-data-30-dec-2024
+docker volume create nginx-data-30-nov-2024
 ```
 This command creates a Docker-managed volume named nginx-data. Docker stores this volume in its internal storage locations.
 
@@ -10,20 +10,20 @@ When running your Nginx container, you can attach the volume to the /usr/share/n
 ```
 docker run -d -p 8080:80 \
     --name nginx-container \
-    -v nginx-data-30-dec-2024:/usr/share/nginx/html \
+    -v nginx-data-30-nov-2024:/usr/share/nginx/html \
     my-nginx-image
 ```
 # Here’s what happens:
 
-The `-v nginx-data:/usr/share/nginx/html` flag mounts the `nginx-data` volume to the Nginx content directory inside the container.
+The `-v nginx-data-30-nov-2024:/usr/share/nginx/html` flag mounts the `nginx-data` volume to the Nginx content directory inside the container.
 If the volume is empty, Docker copies the default content from your image (`index.html`) into the volume during the container’s first run.
 
 # Step 3: Verify the Volume
-To check the content of the `nginx-data-30-dec-2024` volume:
+To check the content of the `nginx-data-30-nov-2024` volume:
 
 1. Start an interactive shell in a temporary container:
 ```
-docker run --rm -it -v nginx-data:/data alpine sh
+docker run --rm -it -v nginx-data-30-nov-2024:/data alpine sh
 ```
 
 2. Navigate to the /data directory (where the volume is mounted):
@@ -40,7 +40,7 @@ For example:
 
 1. Add a new file to the volume:
 ```
-docker run --rm -it -v nginx-data:/data alpine sh
+docker run --rm -it -v nginx-data-30-nov-2024:/data alpine sh
 echo "New content" > /data/newfile.html
 ```
 Access the file via your browser: Visit `http://localhost:8080/newfile.html`.
@@ -49,7 +49,7 @@ Access the file via your browser: Visit `http://localhost:8080/newfile.html`.
 To clean up the volume after use:
 
 ```
-docker volume rm nginx-data
+docker volume rm nginx-data-30-nov-2024
 ```
 
 # Automating with Docker Compose
@@ -63,10 +63,10 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - nginx-data-30-dec-2024:/usr/share/nginx/html
+      - nginx-data-30-nov-2024:/usr/share/nginx/html
 
 volumes:
-  nginx-data:
+  nginx-data-30-nov-2024:
 
 ```
 Run the container:
