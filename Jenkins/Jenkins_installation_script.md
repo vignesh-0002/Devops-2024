@@ -8,7 +8,7 @@ This Bash script automates the installation and configuration of Jenkins on a De
 ## **Script Breakdown**
 
 ### **1. Update and Upgrade System Packages**
-            ```bash
+            
                sudo apt update && sudo apt upgrade -y
 
 - Updates the system package list and upgrades all installed packages to the latest versions.
