@@ -1,0 +1,73 @@
+# Welcome to the Course on Building Automated Machine Images Using HashiCorp Packer
+
+Hey everyone and welcome to our course on building automated machine images using HashiCorp Packer.
+
+Now, although Packer isn't necessarily a new technology, we have been seeing a lot more of Packer lately as we build out automation and image factories as part of our larger engagements.
+
+While there's a huge community that has been using Packer for years, many of these folks are still new to using Packer. This really prompted Gabe and I to put together this course to help students learn how to use it.
+
+### Why the Interest in Packer?
+
+One of the biggest causes of increased interest for Packer lately has been the growing adoption of public cloud or even multi-cloud in many organizations. As they start planning or migrating these workloads to a new platform, organizations are learning that they need something like Packer to help manage these like-for-like images across both on-premises platforms, such as OpenStack or VMware, along with one or more of the newer public cloud platforms they’re migrating to.
+
+These organizations are looking for experienced architects like Gabe and myself to help them build an image factory and automate this process from start to finish so they can focus on the more important tasks. 
+
+So again, that’s what prompted us to put together a course to help students understand how to use HashiCorp Packer.
+
+
+## Course Objectives
+
+we wanted to take a **hands-on approach** to learning Packer. We believe that the best way to learn a new technology is by getting your hands dirty.
+
+We will introduce HashiCorp Packer, understand why people want to use it, the problems it solves, and all its use cases.
+
+Topics include:
+
+- **Installing and operationalizing Packer**: How to install Packer on your machine or alongside other automation systems like Jenkins.
+- **Components of Packer**: Understanding builders, provisioners, communicators, and other components.
+- **Code Organization & Versioning**: How to organize and version your Packer templates using GitHub or GitLab.
+- **Cloud Platform & On-Premises Integrations**: Using Packer with public cloud platforms and on-premises solutions such as OpenStack or VMware.
+
+We want to help you get comfortable using Packer across different platforms.
+
+## Course Format
+
+We’ll have **lectures** to introduce each topic. These lectures won’t be death by PowerPoint! Instead, we use them to provide a foundation for discussion. We want to ensure you understand the terms and definitions that are important when learning Packer.
+
+After the lectures, we’ll have **hands-on labs** where you can apply the concepts we’ve discussed. These labs will help solidify your understanding.
+
+### Demos and Multi-Platform Support
+
+We will primarily demonstrate Packer with a **single cloud platform**, but we will also show you how to use it across other platforms like **Azure**, **Google Cloud**, and **VMware**.
+
+The lab content will be available on GitHub, so you can access it and practice on your own.
+
+## Course Content
+
+You’ll get:
+
+- **Slides in PDF** format for each section for reference.
+- **Resource links** to official documentation, GitHub links, etc.
+- **Mind Maps** to visually summarize each section’s content.
+- **Lab guides**: PDF lab guides available on GitHub that you can use during the course and later.
+
+## Course Agenda
+
+Here’s the breakdown of what we’ll cover in the course:
+
+1. **Introduction to HashiCorp Packer**: What is Packer, its use cases, and its core components.
+2. **Writing Packer Templates**: Focus on HCL (HashiCorp Configuration Language) since it’s the future of Packer.
+3. **Core Components**: Builders, variables, provisioners, post-processors.
+4. **Code Organization**: Best practices for versioning Packer templates in Git.
+5. **Integrations**: How to integrate Packer into CI/CD pipelines and create an image factory.
+6. **Other Use Cases for Packer**: Creating Docker images and other cool use cases.
+
+## Course Resources
+
+We’ll provide all course material on my [GitHub](https://github.com/BTCrowson). You’ll find a **Packer** folder there with all the content for each section.
+
+If you have any questions, feel free to contact us through **Udemy Q&A**, **LinkedIn**, or **Twitter**.
+
+## Conclusion
+
+We’re super excited to bring this course to you! Let's dive in and learn all about HashiCorp Packer.
