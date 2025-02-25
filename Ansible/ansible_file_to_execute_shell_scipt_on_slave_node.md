@@ -160,12 +160,12 @@ ansible-playbook -i hosts.ini dynamic_path.yml -e "script_path=/home/ubuntu/inst
 ```
 
 ### **Explanation of the Command:**
-`ansible-playbook`: Runs an Ansible playbook.
-`-i hosts.ini`: Specifies the inventory file (hosts.ini).
-`dynamic_path.yml`: The playbook that will execute `installdocker.sh`.
-`-e "script_path=/home/ubuntu/installdocker.sh"`:
+- `ansible-playbook`: Runs an Ansible playbook.
+- `-i hosts.ini`: Specifies the inventory file (hosts.ini).
+- `dynamic_path.yml`: The playbook that will execute `installdocker.sh`.
+- `-e "script_path=/home/ubuntu/installdocker.sh"`:
 Passes script_path as an extra variable (-e) to specify the location of installdocker.sh on the remote host.
-`-vvv`: Enables very verbose mode for debugging.
+- `-vvv`: Enables very verbose mode for debugging.
 
 
 ## **Output**:
