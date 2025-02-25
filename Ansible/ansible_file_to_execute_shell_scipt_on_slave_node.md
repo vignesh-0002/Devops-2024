@@ -56,17 +56,8 @@ This Ansible playbook installs Docker on a remote server. It does so by using an
 - **ansible.builtin.shell**: This module runs shell commands on the remote host. In this case, it will execute the install script.
 - **/tmp/{{ script_name }}**: This is the command to execute the script. It refers to the location where the script was copied (`/tmp/`) and uses the dynamic `script_name` to ensure that the correct script is executed.
 
-## Summary of Each Key Component
 
-- **set_fact**: Used to define new variables dynamically within the playbook.
-- **basename**: A Jinja2 filter that extracts the file name from a path (removes the directory part).
-- **ansible.builtin.copy**: An Ansible module to copy files from a local machine to a remote server.
-- **mode**: Specifies file permissions (like `chmod`) on the remote server.
-- **ansible.builtin.shell**: Executes a shell command on the remote server.
-- **become**: Ensures tasks are run with sudo privileges on the remote server.
-```
-```
-Playbook
+# Playbook
 ```
 ---
 - name: Install Docker on the remote server
@@ -90,11 +81,7 @@ Playbook
 
 
 
-# Importance of the Inventory File (`hosts.ini`) in Ansible
-
-The inventory file (`hosts.ini`) is crucial in Ansible as it defines the **target hosts (remote machines)** on which Ansible should execute tasks. It helps organize and manage multiple servers efficiently.
-
-## Understanding Your Inventory File (`hosts.ini`)
+#  Inventory File  (`hosts.ini`)
 ```md
 ```ini
 
@@ -104,40 +91,6 @@ The inventory file (`hosts.ini`) is crucial in Ansible as it defines the **targe
 34.230.89.29
 ```
 
-### Breakdown:
-
-#### **`[webserver]`**
-- This is a **group name** that organizes multiple hosts under the `webserver` group.
-- When running an Ansible playbook, specifying `hosts: webserver` ensures tasks execute on all machines listed under `[webserver]`.
-
-#### **Commented IPs (`#18.206.224.149`, `#34.230.89.29`)**
-- These IPs are commented out (`#`), so Ansible **ignores** them.
-- They might be outdated or temporarily disabled.
-
-#### **Active IPs (`18.206.245.186`, `34.230.89.29`)**
-- These are the **actual target servers** where Ansible will execute the playbook.
-
-## Why is the Inventory File Important?
-
-### **Defines Target Servers**
-- Specifies which machines Ansible should connect to and execute tasks.
-
-### **Supports Grouping of Servers**
-- Allows categorization (e.g., `[webserver]`, `[database]`, `[loadbalancer]`) for better organization.
-
-### **Eases Scalability**
-- Adding/removing hosts is simple without modifying playbooks.
-
-### **Allows Dynamic Configuration**
-- Can be combined with **dynamic inventory** scripts or cloud services like AWS, GCP, and Azure.
-
-## Using This Inventory in Your Command
-
-If you run:
-
-```sh
-ansible-playbook -i hosts.ini dynamic_path.yml -e "script_path=/home/ubuntu/restartcontainer.sh" -vvv
-```
 
 - Ansible will **connect to**:
   - `18.206.245.186`
@@ -148,18 +101,53 @@ ansible-playbook -i hosts.ini dynamic_path.yml -e "script_path=/home/ubuntu/rest
 
 # **Objective of `installdocker.sh` Shell Script**
 
-The script automates the installation of Docker on an Ubuntu-based system. It performs the following tasks:
+```sh
+#!/bin/bash
 
-1. **Updates the system package list** to ensure the latest package information.  
-2. **Installs required dependencies** needed for Docker.  
-3. **Adds Docker's official GPG key** to verify package authenticity.  
-4. **Sets up the Docker repository** so that the system can fetch Docker packages.  
-5. **Updates the package list again** to include Docker-related packages.  
-6. **Installs Docker Community Edition (CE)** in a non-interactive mode to avoid prompts.  
-7. **Starts and enables the Docker service** to run on boot.  
-8. **Verifies the installation** by printing the installed Docker version.  
-9. **Adds the current user to the Docker group** *(optional, so they can run Docker without `sudo`)*.  
-10. **Prints a success message** indicating Docker installation is complete.  
+# Step 1: Update the system package list
+echo "Updating package list..."
+sudo apt-get update -y
+
+# Step 2: Install required dependencies
+echo "Installing dependencies..."
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+
+# Step 3: Add Docker's official GPG key
+echo "Adding Docker's official GPG key..."
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# Step 4: Set up Docker stable repository
+echo "Setting up Docker repository..."
+# Automatically accept the repository addition without asking for user confirmation
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y
+
+# Step 5: Update the package list again to include Docker packages
+echo "Updating package list again..."
+sudo apt-get update -y
+
+# Step 6: Install Docker Community Edition (CE)
+echo "Installing Docker..."
+# Use non-interactive mode to prevent prompts during the install
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce
+
+# Step 7: Start Docker and enable it to start on boot
+echo "Starting Docker service..."
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Step 8: Verify Docker installation
+echo "Verifying Docker installation..."
+sudo docker --version
+
+# Step 9: Add user to Docker group (optional)
+# This allows the user to run Docker commands without sudo
+echo "Adding user to the docker group..."
+sudo usermod -aG docker $USER
+
+# Step 10: Print completion message
+echo "Docker has been installed successfully!"
+```
+The script automates the installation of Docker on an Ubuntu-based system. 
 
 ---
 
