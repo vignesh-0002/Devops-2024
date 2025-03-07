@@ -50,6 +50,24 @@
   
     ![image](https://github.com/user-attachments/assets/0cd83646-07fd-4c42-9d07-a0144ef2492d)
 
+## Casting
+- If you want to specify the data type of a variable, this can be done with casting.
+
+  **Example**
+   ```
+   x = str(3)    # x will be '3'
+   y = int(3)    # y will be 3
+   z = float(3)  # z will be 3.0   
+   ```
+## Get the Type
+- You can get the data type of a variable with the type() function.
+  **Example:**
+  ```
+  x = 5
+  y = "John"
+  print(type(x))
+  print(type(y))
+  ```
     
 # 6. Python Comments:
 
@@ -71,13 +89,3 @@
     print("Hello, World!")
    ```
    
-# Datatypes:
-
-## What is a string?
-In Python, strings are used for representing textual data. A string is a sequence of characters enclosed in either single quotes ('') or double quotes (“”).
-
-**Example:**
-```
-print ("Hello World")
-
-```
