@@ -35,5 +35,22 @@
   ```python
   s3 = boto3.resource('s3')
   ```
+
+- To understand the next block of the code we will see the for loop syntax first.
+- The basic syntax for a for loop in Python is:
+
+  ```python
+    for variable in iterable:
+    # Code block to execute
+
+  ```  
+
+- Example 1: Looping Through a List
+  ```python
+     fruits = ["apple", "banana", "cherry"]
+     for fruit in fruits:
+     print(fruit)
+  ```
+- 
   
   
