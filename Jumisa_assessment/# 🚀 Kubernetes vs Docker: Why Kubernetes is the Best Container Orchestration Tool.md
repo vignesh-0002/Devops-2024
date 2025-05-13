@@ -18,13 +18,13 @@
 
 
  ####  Key Roles of Docker in Containerization:
-   1. *Image Creation & Management* – Helps package applications with their dependencies into container images for consistent deployment.
+   1. **Image Creation & Management** – Helps package applications with their dependencies into container images for consistent deployment.
 
-   2. *Simplified Deployment* – Enables seamless application deployment across different environments with minimal configuration overhead.
+   2. **Simplified Deployment** – Enables seamless application deployment across different environments with minimal configuration overhead.
 
-   3. *Container Orchestration (with Docker Swarm)* – Facilitates the scaling and management of containerized applications in distributed environments.
+   3. **Container Orchestration (with Docker Swarm)** – Facilitates the scaling and management of containerized applications in distributed environments.
 
-   4. *Industry Standard & Ecosystem Leadership* – Docker stays ahead due to its extensive tooling, strong community support, and widespread adoption, making it the go-to 
+   4. **Industry Standard & Ecosystem Leadership** – Docker stays ahead due to its extensive tooling, strong community support, and widespread adoption, making it the go-to 
         containerization platform across industries.
 
 ## 3. Why orchestration matters in real-world deployments
