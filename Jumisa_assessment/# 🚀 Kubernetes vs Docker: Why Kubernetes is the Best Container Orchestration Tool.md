@@ -75,6 +75,25 @@
 
   2. Easily Extensible with Add-Ons and Integrations
     - It integrates with tools like Helm for managing apps, supports advanced setups like serverless and edge computing, and can be customized to fit various use cases.
+### Kubernetes Architecture: Control Plane & Worker Node
+
+Kubernetes follows a **master-worker architecture** to manage containerized applications efficiently across clusters.
+
+#### 🔷 Control Plane (Master Components)
+The control plane is responsible for managing the cluster. It makes global decisions about the cluster, such as scheduling and responding to events.
+
+- **API Server** – Acts as the front-end and handles all external and internal REST requests.
+- **Scheduler** – Assigns workloads (Pods) to worker nodes based on available resources.
+- **Controller Manager** – Maintains the desired state of the system (e.g., replicating Pods, restarting failed containers).
+- **etcd** – A key-value store that holds cluster configuration and state data.
+
+#### 🔶 Worker Nodes
+These nodes run the actual application containers and are managed by the control plane.
+
+- **kubelet** – Ensures containers are running as expected on the node.
+- **kube-proxy** – Manages networking and forwards traffic to the correct Pods.
+- **Container Runtime** – (e.g., containerd) Responsible for running the containers themselves.
+
 
 ## 6. Core Differences Between Docker and Kubernetes
 
@@ -134,7 +153,7 @@ Orchestration automates critical tasks like **scaling**, **load balancing**, and
 Docker is a leading platform for containerization that enables **reliable**, **repeatable**, and **portable** application deployment.
 
   5. Overview of Kubernetes
-Kubernetes is a powerful orchestration system that manages **multiple containers**, automating deployments, scaling, and infrastructure use.
+Kubernetes is a powerful orchestration system that manages **multiple containers**, automating deployments, scaling, and infrastructure use. Along with overview of  Kubernetes Master-Slave Architecture.
 
   6. Core Differences Between Docker and Kubernetes
 While **Docker focuses on running containers**, **Kubernetes is designed to orchestrate, manage, and scale** them across clusters.
