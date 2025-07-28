@@ -30,7 +30,7 @@ resource "aws_launch_template" "ecs_lt" {
 resource "aws_autoscaling_group" "ecs_asg" {
  vpc_zone_identifier = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
  desired_capacity    = 2
- max_size            = 2
+ max_size            = 3
  min_size            = 1
 
  launch_template {
@@ -70,6 +70,22 @@ resource "aws_lb" "ecs_alb" {
 # }
 #}
 
+#resource "aws_lb_listener" "http_redirect" {
+#  load_balancer_arn = aws_lb.ecs_alb.arn
+#  port              = 80
+#  protocol          = "HTTP"
+#
+#  default_action {
+#    type = "redirect"
+#
+#    redirect {
+#      port        = "443"
+#      protocol    = "HTTPS"
+#      status_code = "HTTP_301"
+#    }
+#  }
+#}
+
 resource "aws_lb_listener" "http_forward" {
   load_balancer_arn = aws_lb.ecs_alb.arn
   port              = 80
@@ -77,42 +93,26 @@ resource "aws_lb_listener" "http_forward" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.ecs_tg.arn  # frontend fallback
+    target_group_arn = aws_lb_target_group.ecs_tg.arn
   }
 }
 
 
 
-resource "aws_lb_listener_rule" "backend_rule" {
-  listener_arn = aws_lb_listener.http_forward.arn
 
-  priority     = 20
 
-  action {
+resource "aws_lb_listener" "https_forward" {
+  load_balancer_arn = aws_lb.ecs_alb.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = aws_acm_certificate.ssl_cert.arn  # 👈 Your ACM cert here
+
+  default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.ecs_tg_backend.arn
-  }
-
-  condition {
-    path_pattern {
-      values = ["/api/*"]
-    }
+    target_group_arn = aws_lb_target_group.ecs_tg.arn  # 👈 Your frontend TG here
   }
 }
-
-
-#resource "aws_lb_listener" "frontend_listener" {
-#  load_balancer_arn = aws_lb.ecs_alb.arn
-#  port              = 80
-#  protocol          = "HTTP"
-#
-#  default_action {
-#    type             = "forward"
-#    target_group_arn = aws_lb_target_group.ecs_tg.arn
-#  }
-#}
-#
-
 
 # ✅ General ECS SG (SSH, HTTP, HTTPS from anywhere)
 resource "aws_security_group" "security_group" {
@@ -149,7 +149,6 @@ resource "aws_security_group" "security_group" {
   }
 }
 
-
 # ✅ Frontend SG (allow inbound HTTP)
 resource "aws_security_group" "frontend_sg" {
   name   = "ecs-frontend-sg"
@@ -159,17 +158,14 @@ resource "aws_security_group" "frontend_sg" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    #cidr_blocks = ["0.0.0.0/0"]  # Public access for HTTP
-    #source_security_group_id = aws_security_group.security_group.id
     security_groups          = [aws_security_group.security_group.id] 
-    
+    #cidr_blocks = ["0.0.0.0/0"]  # Public access for HTTP
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -194,5 +190,6 @@ resource "aws_security_group" "backend_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 
 
