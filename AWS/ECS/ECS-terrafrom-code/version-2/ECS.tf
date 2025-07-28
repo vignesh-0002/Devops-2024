@@ -1,91 +1,277 @@
-resource "aws_launch_template" "ecs_lt" {
- name_prefix   = "ecs-template"
- image_id      = "ami-0b42a7f312a9ed8a5"
- instance_type = "t3.micro"
-
- key_name               = "vignesh"
- vpc_security_group_ids = [aws_security_group.security_group.id]
- iam_instance_profile {
-   name = aws_iam_instance_profile.ecs_instance_profile.name
- }
-
- block_device_mappings {
-   device_name = "/dev/xvda"
-   ebs {
-     volume_size = 30
-     volume_type = "gp2"
-   }
- }
-
- tag_specifications {
-   resource_type = "instance"
-   tags = {
-     Name = "ecs-instance"
-   }
- }
-
- user_data = filebase64("${path.module}/ecs.sh")
+resource "aws_ecs_cluster" "ecs_cluster" {
+ name = "my-ecs-cluster"
 }
 
-resource "aws_autoscaling_group" "ecs_asg" {
- vpc_zone_identifier = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
- desired_capacity    = 2
- max_size            = 2
- min_size            = 1
+resource "aws_ecs_capacity_provider" "ecs_capacity_provider" {
+ name = "test1"
 
- launch_template {
-   id      = aws_launch_template.ecs_lt.id
-   version = "$Latest"
+ auto_scaling_group_provider {
+   auto_scaling_group_arn = aws_autoscaling_group.ecs_asg.arn
+
+   managed_scaling {
+     maximum_scaling_step_size = 1000
+     minimum_scaling_step_size = 1
+     status                    = "ENABLED"
+     target_capacity           = 3
+   }
  }
+}
+
+resource "aws_ecs_cluster_capacity_providers" "example" {
+ cluster_name = aws_ecs_cluster.ecs_cluster.name
+
+ capacity_providers = [aws_ecs_capacity_provider.ecs_capacity_provider.name]
+
+ default_capacity_provider_strategy {
+   base              = 1
+   weight            = 100
+   capacity_provider = aws_ecs_capacity_provider.ecs_capacity_provider.name
+ }
+}
+
+resource "aws_ecs_task_definition" "ecs_task_definition" {
+  family             = "my-ecs-task"
+  network_mode       = "awsvpc"
+  execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
+#  execution_role_arn = "arn:aws:iam::438465168997:role/ecsTaskExecutionRole"
+  cpu                = 256
+  memory             = 512
+
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+
+  container_definitions = jsonencode([
+    {
+      name       = "dockergs"
+      image      = "438465168997.dkr.ecr.us-east-1.amazonaws.com/emsops/vignesh-frontend:v1.0.0"
+      cpu        = 256
+      memory     = 512
+      essential  = true
+
+      # Entry point and command for typical React container
+      #entryPoint = ["sh", "-c"],
+      #command    = ["npm start"],
+
+      portMappings = [
+        {
+          containerPort = 3000
+          protocol      = "tcp"
+        }
+      ],
+
+      environment = [
+        {
+          name  = "REACT_APP_BACKEND_URL"
+          value = "https://getitworth.com"
+
+        }
+      ],
+
+      logConfiguration = {
+        logDriver = "awslogs",
+        options = {
+          awslogs-group         = "/ecs/emsops-frontend"
+          awslogs-region        = "us-east-1"
+          awslogs-stream-prefix = "frontend"
+        }
+      }
+    }
+  ])
+
+depends_on = [
+    aws_cloudwatch_log_group.frontend_logs,
+    aws_lb.ecs_alb,
+    aws_ecs_service.ecs_service_backend
+  ]
+}
+
+
+resource "aws_ecs_service" "ecs_service" {
+ name            = "my-ecs-service"
+ cluster         = aws_ecs_cluster.ecs_cluster.id
+ task_definition = aws_ecs_task_definition.ecs_task_definition.arn
+ desired_count   = 0
+
+ #network_configuration {
+ #  subnets         = [aws_subnet.subnet.id, aws_subnet.subnet2.id]
+ #  security_groups = [aws_security_group.security_group.id]
+ #}
+
+
+network_configuration {
+    subnets          = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
+    security_groups  = [aws_security_group.frontend_sg.id]
+    assign_public_ip = false # or true, depending on your networking setup
+  }
  
-
- tag {
-   key                 = "AmazonECSManaged"
-   value               = true
-   propagate_at_launch = true
+ placement_constraints {
+   type = "distinctInstance"
  }
+
+ capacity_provider_strategy {
+   capacity_provider = aws_ecs_capacity_provider.ecs_capacity_provider.name
+   weight            = 100
+ }
+
+ load_balancer {
+   target_group_arn = aws_lb_target_group.ecs_tg.arn
+   container_name   = "dockergs"
+   container_port   = 3000
+ }
+ force_new_deployment = true 
+
+ depends_on = [aws_autoscaling_group.ecs_asg]
 }
 
-resource "aws_lb" "ecs_alb" {
- name               = "ecs-alb"
- internal           = false
- load_balancer_type = "application"
- security_groups    = [aws_security_group.security_group.id]
- subnets = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
-# subnets            = [aws_subnet.subnet.id, aws_subnet.subnet2.id]
-
- tags = {
-   Name = "ecs-alb"
- }
+variable "db_name" {
+  default = "ems"
 }
 
-#resource "aws_lb_listener" "ecs_alb_listener" {
-# load_balancer_arn = aws_lb.ecs_alb.arn
-# port              = 80
-# protocol          = "HTTP"
-#
-# default_action {
-#   type             = "forward"
-#   target_group_arn = aws_lb_target_group.ecs_tg.arn
-# }
-#}
+resource "aws_ecs_task_definition" "ecs_task_definition_backend" {
+  family                   = "emsops-backend-task"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["EC2"]
+  execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
+  #execution_role_arn       = "arn:aws:iam::438465168997:role/ecsTaskExecutionRole"
+  cpu                      = 256
+  memory                   = 512
 
-resource "aws_lb_listener" "http_forward" {
-  load_balancer_arn = aws_lb.ecs_alb.arn
-  port              = 80
-  protocol          = "HTTP"
+  container_definitions = jsonencode([
+    {
+      name      = "emsops-backend"
+      image     = "438465168997.dkr.ecr.us-east-1.amazonaws.com/emsops/vignesh-backend:v1.0.0"
+                
+      cpu       = 256
+      memory    = 512
+      essential = true
+     # command   = [
+     #   "sh",
+     #   "-c",
+     #   "mysql -h ${aws_db_instance.ems.address} -uadmin -padmin123 -e 'CREATE DATABASE IF NOT EXISTS ${var.db_name};' && java -jar /app/app.jar"
+     # ],
+     # portMappings = [
+     #   {
+     #     containerPort = 8080
+     #     protocol      = "tcp"
+     #   }
 
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.ecs_tg.arn  # frontend fallback
+        portMappings = [
+          {
+            containerPort = 8080
+            hostPort      = 8080
+            protocol      = "tcp"
+          }
+        ],
+      environment = [
+        {
+          name  = "SPRING_DATASOURCE_USERNAME"
+          value = "admin"
+        },
+        {
+          name  = "SPRING_DATASOURCE_PASSWORD"
+          value = "admin123"
+        },
+        {
+          name  = "SPRING_DATASOURCE_URL"
+          value = "jdbc:mysql://${aws_db_instance.ems.address}:3306/ems?useSSL=false&allowPublicKeyRetrieval=true"
+        },
+        {
+          name  = "SPRING_JPA_HIBERNATE_DDL_AUTO"
+          value = "update"
+        },
+       {
+          name  = "SPRING_APPLICATION_JSON"
+          value = "{\"server.address\":\"0.0.0.0\"}"
+       }
+
+      ],
+      logConfiguration = {
+                         logDriver = "awslogs"
+                         options = {
+                         awslogs-group         = "/ecs/emsops-backend"
+                         awslogs-region        = "us-east-1"
+                         awslogs-stream-prefix = "backend"
   }
 }
 
+    }
+  ])
+   depends_on = [
+    aws_db_instance.ems,
+    aws_autoscaling_group.ecs_asg,
+    #aws_ecs_service.ecs_service_backend
+  ]
 
+}
+
+
+resource "aws_ecs_service" "ecs_service_backend" {
+  name            = "emsops-backend-service"
+  cluster         = aws_ecs_cluster.ecs_cluster.id
+  task_definition = aws_ecs_task_definition.ecs_task_definition_backend.arn
+  desired_count   = 0
+
+
+   # ✅ Add this line below desired_count
+  health_check_grace_period_seconds = 60
+ 
+
+network_configuration {
+  subnets         = [aws_subnet.private_subnet_a.id, aws_subnet.private_subnet_b.id]
+  security_groups = [aws_security_group.backend_sg.id]
+}
+
+
+
+
+  capacity_provider_strategy {
+    capacity_provider = aws_ecs_capacity_provider.ecs_capacity_provider.name
+    weight            = 100
+  }
+
+  placement_constraints {
+    type = "distinctInstance"
+  }
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.ecs_tg_backend.arn
+    container_name   = "emsops-backend"
+    container_port   = 8080
+  }
+
+
+  depends_on = [aws_autoscaling_group.ecs_asg]
+}
+
+
+resource "aws_lb_target_group" "ecs_tg_backend" {
+  name_prefix = "ecsbk-"
+  port        = 8080
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = aws_vpc.main.id
+
+  health_check {
+    path                = "/api/health"  # or just "/" if your backend root works
+    protocol            = "HTTP"
+    matcher             = "200-399"
+    #health_check_grace_period_seconds = 60
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 3
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
 
 resource "aws_lb_listener_rule" "backend_rule" {
-  listener_arn = aws_lb_listener.http_forward.arn
-
+  listener_arn = aws_lb_listener.https_forward.arn  # ✅ use 443 listener
+  
   priority     = 20
 
   action {
@@ -101,98 +287,25 @@ resource "aws_lb_listener_rule" "backend_rule" {
 }
 
 
-#resource "aws_lb_listener" "frontend_listener" {
-#  load_balancer_arn = aws_lb.ecs_alb.arn
-#  port              = 80
-#  protocol          = "HTTP"
-#
-#  default_action {
-#    type             = "forward"
-#    target_group_arn = aws_lb_target_group.ecs_tg.arn
-#  }
-#}
-#
 
+resource "aws_lb_target_group" "ecs_tg" {
+  name_prefix = "ecstg-" # allows create_before_destroy
+  port        = 3000
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = aws_vpc.main.id
 
-# ✅ General ECS SG (SSH, HTTP, HTTPS from anywhere)
-resource "aws_security_group" "security_group" {
-  name   = "ecs-security-group"
-  vpc_id = aws_vpc.main.id
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "Allow SSH from anywhere (insecure)"
+  health_check {
+    path                = "/"              # Match your app's root path
+    protocol            = "HTTP"
+    matcher             = "200-399"        # Accepts redirects and other valid responses
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 3
   }
 
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+  lifecycle {
+    create_before_destroy = true
   }
 }
-
-
-# ✅ Frontend SG (allow inbound HTTP)
-resource "aws_security_group" "frontend_sg" {
-  name   = "ecs-frontend-sg"
-  vpc_id = aws_vpc.main.id
-
-  ingress {
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "tcp"
-    #cidr_blocks = ["0.0.0.0/0"]  # Public access for HTTP
-    #source_security_group_id = aws_security_group.security_group.id
-    security_groups          = [aws_security_group.security_group.id] 
-    
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-# ✅ Backend SG (no open ports to public, only allows 8080 from frontend SG)
-resource "aws_security_group" "backend_sg" {
-  name   = "ecs-backend-sg"
-  vpc_id = aws_vpc.main.id
-
-  ingress {
-    from_port                = 8080
-    to_port                  = 8080
-    protocol                 = "tcp"
-    security_groups          = [aws_security_group.security_group.id]  # Reference your ALB SG here
-    description              = "Allow ALB access to backend on port 8080"
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-
