@@ -66,3 +66,23 @@
 
 
 Note: NAT Gateway incurs $0.045/hour and $0.045/GB data processed. Costs may rise depending on usage.
+
+# 🛡️ AWS IAM Setup for ECS using Terraform
+This Terraform script provisions the necessary AWS IAM roles, policies, and instance profiles required for running Amazon ECS using both EC2 and Fargate launch types.
+
+## ✅ IAM Roles, Policies, and Instance Profile
+
+### 1️⃣ aws_iam_role.ecs_instance_role  
+**Purpose**: IAM role that EC2 instances assume to communicate with ECS and other AWS services.
+
+### 2️⃣ aws_iam_role_policy_attachment.ecs_instance_role_policy  
+**Purpose**: Attaches the AWS-managed policy `AmazonEC2ContainerServiceforEC2Role` to the EC2 IAM role, enabling ECS container instance functionality.
+
+### 3️⃣ aws_iam_instance_profile.ecs_instance_profile  
+**Purpose**: Allows the EC2 IAM role to be attached to ECS container instances when launching them.
+
+### 4️⃣ aws_iam_role.ecs_task_execution_role  
+**Purpose**: IAM role that ECS tasks assume at runtime to access required AWS services (e.g., ECR, CloudWatch, Secrets Manager).
+
+### 5️⃣ aws_iam_role_policy_attachment.ecs_task_execution_policy  
+**Purpose**: Attaches the AWS-managed policy `AmazonECSTaskExecutionRolePolicy` to the ECS task execution role, enabling ECS tasks to pull images, send logs, and access secrets.
