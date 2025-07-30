@@ -86,3 +86,4 @@ This Terraform script provisions the necessary AWS IAM roles, policies, and inst
 
 ### 5️⃣ aws_iam_role_policy_attachment.ecs_task_execution_policy  
 **Purpose**: Attaches the AWS-managed policy `AmazonECSTaskExecutionRolePolicy` to the ECS task execution role, enabling ECS tasks to pull images, send logs, and access secrets.
+
