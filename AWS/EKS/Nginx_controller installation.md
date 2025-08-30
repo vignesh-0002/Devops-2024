@@ -69,3 +69,32 @@ aws iam attach-role-policy \
   --role-name EKSNodeInstanceRole \
   --policy-arn arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
 ```
+
+## Steps to create Cluster:
+
+- Command to create cluster:
+
+```
+aws eks create-cluster \
+  --name budget-eks \
+  --region us-east-1 \
+  --role-arn arn:aws:iam::438465168997:role/EKSClusterRole \
+  --resources-vpc-config subnetIds=subnet-0393724a838283392,subnet-036ee587b6816bf88,securityGroupIds=sg-052e7d0982f25afcb
+
+```
+
+- Here’s the command (using 2 EC2 nodes with t3.small for budget):
+
+```
+aws eks create-nodegroup \
+  --cluster-name budget-eks \
+  --nodegroup-name budget-ng \
+  --scaling-config minSize=2,maxSize=2,desiredSize=2 \
+  --disk-size 20 \
+  --subnets subnet-0393724a838283392 subnet-036ee587b6816bf88 \
+  --instance-types t3.small \
+  --ami-type AL2023_x86_64_STANDARD \
+  --node-role arn:aws:iam::438465168997:role/EKSNodeInstanceRole \
+  --region us-east-1
+```
+
